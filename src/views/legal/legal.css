@@ -1,0 +1,67 @@
+.legal-container {
+    width: 100%;
+    display: flex;
+    padding: 32px;
+    overflow: auto;
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+}
+
+.legal-header {
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    align-self: flex-start;
+    align-items: flex-start;
+    margin-bottom: 72px;
+    flex-direction: column;
+}
+
+.legal-title {
+    font-size: 32px;
+    align-self: flex-start;
+    font-style: normal;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.legal-subtitle {
+    font-size: 18px;
+}
+
+.legal-input-container {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 48px;
+    flex-direction: column;
+}
+
+.legal-textinput {
+    flex: 1;
+    width: 100%;
+    padding: 12px;
+    border-color: #050404;
+    border-width: 2px;
+    outline-style: none;
+    border-radius: 14px;
+}
+
+.legal-legal-group {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.legal-text {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    margin-bottom: 16px;
+}

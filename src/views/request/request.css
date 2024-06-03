@@ -44,7 +44,6 @@
     color: var(--dl-color-gray-black);
     font-size: 48px;
     font-style: normal;
-    font-family: "Fira Sans";
     font-weight: 600;
 }
 
@@ -52,7 +51,6 @@
     color: var(--dl-color-gray-500);
     font-size: 18px;
     align-self: flex-start;
-    font-family: "Poppins";
     line-height: 30px;
 }
 
@@ -215,7 +213,6 @@
     font-size: 14px;
     max-width: 535px;
     font-style: normal;
-    font-family: "Inter";
     font-weight: 600;
     line-height: 27px;
 }
@@ -322,7 +319,6 @@
     font-size: 14px;
     max-width: 535px;
     font-style: normal;
-    font-family: "Inter";
     font-weight: 600;
     line-height: 27px;
 }
@@ -459,7 +455,6 @@
     font-size: 14px;
     max-width: 535px;
     font-style: normal;
-    font-family: "Inter";
     font-weight: 600;
     line-height: 27px;
 }
@@ -534,7 +529,6 @@
     font-size: 14px;
     max-width: 535px;
     font-style: normal;
-    font-family: "Inter";
     font-weight: 600;
     line-height: 27px;
 }
@@ -644,7 +638,6 @@
     font-size: 18px;
     max-width: 535px;
     font-style: normal;
-    font-family: "Poppins";
     font-weight: 600;
     line-height: 27px;
 }
@@ -735,7 +728,6 @@
     font-size: 18px;
     max-width: 535px;
     font-style: normal;
-    font-family: "Poppins";
     font-weight: 600;
     line-height: 27px;
 }
@@ -744,7 +736,6 @@
     color: var(--dl-color-gray-700);
     width: 100%;
     max-width: 100%;
-    font-family: "Poppins";
     line-height: 24px;
     user-select: text;
 }
@@ -783,7 +774,6 @@
     font-size: 18px;
     max-width: 535px;
     font-style: normal;
-    font-family: "Poppins";
     font-weight: 600;
     line-height: 27px;
 }
@@ -792,7 +782,6 @@
     color: var(--dl-color-gray-700);
     width: 100%;
     max-width: 100%;
-    font-family: "Poppins";
     line-height: 24px;
     user-select: text;
 }
@@ -831,7 +820,6 @@
     font-size: 18px;
     max-width: 535px;
     font-style: normal;
-    font-family: "Poppins";
     font-weight: 600;
     line-height: 27px;
 }
@@ -840,7 +828,6 @@
     color: var(--dl-color-gray-700);
     width: 100%;
     max-width: 100%;
-    font-family: "Poppins";
     line-height: 24px;
     user-select: text;
 }
@@ -920,7 +907,6 @@
     .request-caption {
         color: rgb(255, 255, 255);
         font-size: 16px;
-        font-family: Poppins;
         line-height: 24px;
     }
 

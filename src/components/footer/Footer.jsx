@@ -1,10 +1,37 @@
-import React from 'react'
-import Assets from '../../assets/Assets'
-import './footer.css'
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Axios } from '../../api/Axios';
+import Assets from '../../assets/Assets';
 import Links from '../../config/Links';
+import SweetAlert from '../../config/SweetAlert';
+import Loader from '../loading/Loader';
+import './footer.css';
 
 const Footer = () => {
+    const [isSubscribing, setIsSubscribing] = useState(false)
+    const [emailAddress, setEmailAddress] = useState("")
+
+    const subscribe = async () => {
+        setIsSubscribing(true)
+        await Axios.get(`/company/newsletter/subscribe?email_address=${emailAddress}`)
+            .then((response) => {
+                setIsSubscribing(false)
+                if(response.data["code"] === 200) {
+                    setEmailAddress("")
+                    SweetAlert(response.data["message"], "success")
+                } else {
+                    SweetAlert(response.data["message"], "error")
+                }
+            })
+            .catch((error) => {
+                setIsSubscribing(false)
+                if(error?.code === "ERR_NETWORK") {
+                    SweetAlert("Network error. Please check your internet connection", "error")
+                } else {
+                    SweetAlert(error, "error")
+                }
+            })
+    }
     const footerLinks = [
         {
             "main": "Company",
@@ -139,7 +166,7 @@ const Footer = () => {
                                 <br className=""></br>
                             </a>
                         </div>
-                        {/* <main className="footer-subscribe">
+                        <main className="footer-subscribe">
                             <main className="footer-main">
                                 <h1 className="footer-heading">Subscribe to our newsletter</h1>
                                 <div className="footer-input-field">
@@ -147,20 +174,18 @@ const Footer = () => {
                                         type="email"
                                         placeholder="Enter your email"
                                         className="footer-textinput input"
+                                        value={emailAddress}
+                                        onChange={e => setEmailAddress(e.target.value)}
                                     />
-                                    <div className="footer-buy button">
-                                        <span className="footer-text03">{"->"}</span>
-                                        <span className="footer-text04">
-                                        <span className="">Subscribe</span>
-                                        <br className=""></br>
-                                        </span>
+                                    <div className="footer-buy button" onClick={subscribe}>
+                                        {isSubscribing ? <Loader width={60}/> : <span className="footer-text04">Subscribe</span>}
                                     </div>
                                 </div>
                             </main>
                             <h1 className="footer-notice">
                                 By subscribing to our newsletter you agree with our Terms and Conditions.
                             </h1>
-                        </main> */}
+                        </main>
                     </div>
                     <header className="footer-categories">
                         {

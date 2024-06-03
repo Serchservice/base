@@ -30,7 +30,6 @@
 .media-and-assets-text {
     color: var(--dl-color-gray-white);
     font-size: 16px;
-    font-family: "Comfortaa";
     margin-bottom: var(--dl-space-space-twounits);
 }
 
@@ -151,7 +150,6 @@
     font-size: 24px;
     max-width: 535px;
     font-style: normal;
-    font-family: "Inter";
     font-weight: 400;
     line-height: 27px;
 }

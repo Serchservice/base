@@ -340,7 +340,6 @@
     color: var(--dl-color-gray-black);
     font-size: 14px;
     font-style: normal;
-    font-family: "Inter";
     font-weight: 600;
 }
 
@@ -572,7 +571,6 @@
     font-size: 24px;
     max-width: 535px;
     font-style: normal;
-    font-family: "Inter";
     font-weight: 600;
     line-height: 27px;
 }
@@ -616,7 +614,6 @@
     font-size: 24px;
     max-width: 535px;
     font-style: normal;
-    font-family: "Inter";
     font-weight: 600;
     line-height: 27px;
 }

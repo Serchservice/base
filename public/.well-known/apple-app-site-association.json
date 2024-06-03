@@ -1,0 +1,15 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "S8QB4VV633.serch.provider.app",
+                "paths": ["*"]
+            },
+            {
+                "appID": "S8QB4VV633.serch.user.app",
+                "paths": ["*"]
+            }
+        ]
+    }
+}

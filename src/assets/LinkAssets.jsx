@@ -1,4 +1,6 @@
 const LinkAssets = {
+    logo: "https://firebasestorage.googleapis.com/v0/b/serch-2eb43.appspot.com/o/dark%20-%20Serch%20Boxed%20(1).png?alt=media&token=33a92273-2fdc-4d0c-9fa4-fe4a5984e4b8",
+    
     aboutUsBackground: "https://images.unsplash.com/photo-1573167507387-6b4b98cb7c13?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDY4fHxjb21wYW55fGVufDB8fHx8MTcwODg3MDgyMnww&amp;ixlib=rb-4.0.3&amp;w=1500",
     aboutUsMission: "https://images.unsplash.com/photo-1527821468487-b724210d296a?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDIwfHxtaXNzaW9ufGVufDB8fHx8MTcwODg2MjEzNXww&amp;ixlib=rb-4.0.3&amp;w=1500",
     aboutUsAll: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDF8fGhhaXIlMjBjdXR8ZW58MHx8fHwxNzA4ODY0MTQ0fDA&amp;ixlib=rb-4.0.3&amp;w=1500",

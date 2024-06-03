@@ -44,7 +44,6 @@
     color: var(--dl-color-gray-white);
     font-size: 48px;
     font-style: normal;
-    font-family: "Fira Sans";
     font-weight: 600;
 }
 
@@ -89,7 +88,6 @@
     font-size: 18px;
     max-width: 535px;
     font-style: normal;
-    font-family: "Poppins";
     font-weight: 600;
     line-height: 27px;
 }
@@ -215,7 +213,6 @@
     font-size: 14px;
     max-width: 535px;
     font-style: normal;
-    font-family: "Inter";
     font-weight: 600;
     line-height: 27px;
 }
@@ -458,7 +455,6 @@
     font-size: 14px;
     max-width: 535px;
     font-style: normal;
-    font-family: "Inter";
     font-weight: 600;
     line-height: 27px;
 }
@@ -533,7 +529,6 @@
     font-size: 14px;
     max-width: 535px;
     font-style: normal;
-    font-family: "Inter";
     font-weight: 600;
     line-height: 27px;
 }
@@ -689,7 +684,6 @@
     font-size: 18px;
     max-width: 535px;
     font-style: normal;
-    font-family: "Poppins";
     font-weight: 600;
     line-height: 27px;
 }
@@ -698,7 +692,6 @@
     color: var(--dl-color-gray-700);
     width: 100%;
     max-width: 100%;
-    font-family: "Poppins";
     line-height: 24px;
     user-select: text;
 }
@@ -737,7 +730,6 @@
     font-size: 18px;
     max-width: 535px;
     font-style: normal;
-    font-family: "Poppins";
     font-weight: 600;
     line-height: 27px;
 }
@@ -746,7 +738,6 @@
     color: var(--dl-color-gray-700);
     width: 100%;
     max-width: 100%;
-    font-family: "Poppins";
     line-height: 24px;
     user-select: text;
 }
@@ -785,7 +776,6 @@
     font-size: 18px;
     max-width: 535px;
     font-style: normal;
-    font-family: "Poppins";
     font-weight: 600;
     line-height: 27px;
 }
@@ -794,7 +784,6 @@
     color: var(--dl-color-gray-700);
     width: 100%;
     max-width: 100%;
-    font-family: "Poppins";
     line-height: 24px;
     user-select: text;
 }

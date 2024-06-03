@@ -1,5 +1,6 @@
 const Links = {
     home: "/",
+    error: "/page-404",
 
     aboutUs: "/about-us",
 
@@ -34,6 +35,13 @@ const Links = {
     requestSharing: "/request-sharing",
     provideSharing: "/provide-sharing",
     schedule: "/reserve",
+
+    verifyAccountSetup: "/auth/associate/verify/",
+    associateAccountSetup: "/auth/associate/setup",
+    verifyCertificate: "/platform/certificates",
+    viewCertificate: "/platform/certificate",
+    verifyPayment: "/payment/verify",
+    unsubscribeNewsletter: "/newsletter/unsubscribe",
 
     termsAndConditions: "/hub/legal/terms-and-conditions",
     accessibility: "/hub/legal/accessibility",

@@ -10,6 +10,7 @@
     padding-right: var(--dl-space-space-threeunits);
     flex-direction: column;
     padding-bottom: var(--dl-space-space-sixunits);
+    background-color: var(--dl-color-gray-black);
 }
 
 .footer-short-container {
@@ -69,7 +70,6 @@
     color: rgb(196, 196, 196);
     width: 100%;
     font-size: 14px;
-    font-family: "Poppins";
     line-height: 21px;
 }
 
@@ -86,7 +86,6 @@
     width: auto;
     font-size: 14px;
     align-self: center;
-    font-family: "Poppins";
     line-height: 21px;
     text-decoration: none;
 }

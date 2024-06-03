@@ -1,27 +1,58 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import './leadership.css'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 import Assets from '../../assets/Assets'
+import { Axios } from '../../api/Axios'
+import ItemGenerator from '../../config/ItemGenerator'
+import Shimmer from '../../components/shimmer/Shimmer'
 
 const Leadership = () => {
-    const leaders = [
+    const [executives, setExecutives] = useState([
         {
-            "image": "https://wyvcjsumdfoamsmdzsna.supabase.co/storage/v1/object/public/team/Evaristus.jpg",
-            "name": "Evaristus Adimonyemma",
-            "position": "Chief Executive Officer",
-            "link": "https://linkedin.com/in/iamevaristus",
-            "short_name": "Evaristus"
+            "image": "",
+            "name": "",
+            "position": "",
+            "link": "",
+            "short_name": ""
         }
-    ]
+    ])
+    const [boards, setBoards] = useState([
+        {
+            "name": "",
+            "position": "",
+        }
+    ])
+    const [isFetchingBoards, setIsFetchingBoards] = useState(true)
+    const [isFetchingExecutives, setIsFetchingExecutives] = useState(true)
 
-    const board = [
-        {
-            "name": "Evaristus Adimonyemma",
-            "position": "CEO, Serchservice"
-        }
-    ]
+    useEffect(() => {
+        fetchBoards()
+        fetchExecutives()
+    }, [])
+
+    async function fetchExecutives() {
+        setIsFetchingExecutives(true)
+        await Axios.get("/company/team?type=EXECUTIVE").then((response) => {
+            if(response.data["code"] === 200) {
+                setIsFetchingExecutives(false)
+                setExecutives(response.data["data"])
+                console.log(executives)
+            }
+        }).catch(() => { })
+    }
+
+    async function fetchBoards() {
+        setIsFetchingBoards(true)
+        await Axios.get("/company/team?type=BOARD").then((response) => {
+            if(response.data["code"] === 200) {
+                setIsFetchingBoards(false)
+                setBoards(response.data["data"])
+                console.log(boards)
+            }
+        }).catch(() => { })
+    }
 
     return (
         <div className="leadership-container">
@@ -38,14 +69,16 @@ const Leadership = () => {
                     <h1 className="leadership-text">Executive Team</h1>
                     <div className="leadership-team">
                         {
-                            leaders.map((value, key) => {
+                            isFetchingExecutives ? ItemGenerator(length = 5).map((_, key) => {
+                                return (<Shimmer key={ key } height={300} width={300}/>)
+                            }) : executives.map((value, key) => {
                                 return (
                                     <div className="leadership-box" key={ key }>
                                         <img alt="Profile Picture" src={ value.image } className="leadership-image" />
                                         <span className="leadership-text01">{ value.name }</span>
                                         <span className="leadership-text02">{ value.position }</span>
                                         <a href={ value.link } target="_blank" rel="noreferrer noopener" className="leadership-link">
-                                            Read { value.short_name }&apos;s Bio
+                                            Read Bio
                                         </a>
                                     </div>
                                 )
@@ -61,7 +94,9 @@ const Leadership = () => {
                         gap: "10px",
                     }}>
                         {
-                            board.map((value, key) => {
+                            isFetchingBoards ? ItemGenerator(length = 5).map((_, key) => {
+                                return (<Shimmer key={ key } height={80} width={240}/>)
+                            }) : boards.map((value, key) => {
                                 return (
                                     <div className="leadership-box5" key={ key }>
                                         <span className="leadership-text12">{ value.name }</span>

@@ -11,6 +11,7 @@
     flex-direction: column;
     padding-bottom: var(--dl-space-space-threeunits);
     justify-content: center;
+    background-color: var(--dl-color-gray-black);
 }
 
 .footer-content {

@@ -45,7 +45,6 @@
     color: rgb(255, 255, 255);
     font-size: 48px;
     font-style: normal;
-    font-family: "Fira Sans";
     font-weight: 600;
 }
 
@@ -53,7 +52,6 @@
     color: rgb(255, 255, 255);
     font-size: 18px;
     align-self: flex-start;
-    font-family: "Poppins";
     line-height: 30px;
 }
 
@@ -94,7 +92,6 @@
     color: var(--dl-color-gray-black);
     font-size: 40px;
     font-style: normal;
-    font-family: Poppins;
     font-weight: 600;
 }
 
@@ -121,52 +118,44 @@
     color: var(--dl-color-gray-black);
     font-size: 24px;
     font-style: normal;
-    font-family: "Poppins";
     font-weight: 600;
 }
 
 .home-text10 {
     color: rgb(121, 124, 128);
-    font-family: "Poppins";
 }
 
 .home-text11 {
     color: var(--dl-color-gray-black);
     font-size: 24px;
     font-style: normal;
-    font-family: "Poppins";
     font-weight: 600;
 }
 
 .home-text12 {
     color: rgb(121, 124, 128);
-    font-family: "Poppins";
 }
 
 .home-text16 {
     color: var(--dl-color-gray-black);
     font-size: 24px;
     font-style: normal;
-    font-family: "Poppins";
     font-weight: 600;
 }
 
 .home-text17 {
     color: rgb(121, 124, 128);
-    font-family: "Poppins";
 }
 
 .home-text21 {
     color: var(--dl-color-gray-black);
     font-size: 24px;
     font-style: normal;
-    font-family: "Poppins";
     font-weight: 600;
 }
 
 .home-text22 {
     color: rgb(121, 124, 128);
-    font-family: "Poppins";
 }
 
 .home-note {
@@ -201,13 +190,11 @@
     color: var(--dl-color-gray-500);
     font-size: 32px;
     font-style: normal;
-    font-family: "Poppins";
     font-weight: 500;
 }
 
 .home-paragraph {
     color: var(--dl-color-gray-black);
-    font-family: "Poppins";
     line-height: 28px;
 }
 
@@ -290,7 +277,6 @@
     color: var(--dl-color-gray-black);
     font-size: 48px;
     font-style: normal;
-    font-family: "Fira Sans";
     font-weight: 600;
 }
 
@@ -298,7 +284,6 @@
     color: var(--dl-color-gray-500);
     font-size: 18px;
     align-self: flex-start;
-    font-family: "Poppins";
     line-height: 30px;
 }
 
@@ -406,7 +391,7 @@
 
     .home-text17 {
         color: rgb(121, 124, 128);
-        font-family: Poppins;
+
     }
 
     .home-note {
@@ -467,7 +452,7 @@
     .home-caption {
         color: rgb(255, 255, 255);
         font-size: 16px;
-        font-family: Poppins;
+
         line-height: 24px;
     }
 
@@ -559,7 +544,7 @@
     .home-caption1 {
         color: var(--dl-color-gray-500);
         font-size: 16px;
-        font-family: Poppins;
+
         line-height: 24px;
     }
 }
@@ -586,7 +571,7 @@
         color: var(--dl-color-gray-black);
         font-size: 40px;
         font-style: normal;
-        font-family: Poppins;
+
         font-weight: 600;
     }
 

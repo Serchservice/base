@@ -14,19 +14,18 @@ const AboutUs = () => {
         <div className="about-us-container">
             <Helmet>
                 <title>About Us | Serch</title>
-                <meta name="description" content="Details about our company" />
+                <meta name="description" content="Learn about Serch, our team and what inspires us to do what we love" />
                 <meta property="og:title" content="About Us | Serch" />
-                <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ Assets.logo } />
+                <meta property="og:description" content="Learn about Serch, our team and what inspires us to do what we love" />
+                <meta property="og:image" content={ LinkAssets.logo } />
+                <meta property="og:site_name" content="www.serchservice.com" />
             </Helmet>
             <Header />
             <div className="about-us-about-us-header">
                 <h1 className="about-us-text">About Us</h1>
             </div>
             <div className="about-us-about-us-info">
-                <h1 className="about-us-text01">
-                    We revolutionize the way people get repairs and keep the motion flowing
-                </h1>
+                <h1 className="about-us-text01">We revolutionize the way people get repairs and keep the motion flowing</h1>
                 <span className="about-us-text02">
                     Every morning when we wake up, we are energized to deliver a top-notch
                     platform that makes living easy. We drive ourselves towards providing

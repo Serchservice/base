@@ -43,7 +43,6 @@
     color: var(--dl-color-gray-black);
     font-size: 48px;
     font-style: normal;
-    font-family: "Fira Sans";
     font-weight: 600;
 }
 
@@ -2003,7 +2002,6 @@
     .requesting-caption {
         color: rgb(255, 255, 255);
         font-size: 16px;
-        font-family: Poppins;
         line-height: 24px;
     }
 
