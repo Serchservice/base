@@ -23,7 +23,7 @@ const Links = {
     countries: "/countries-in-serch",
 
     legal: "/hub/legal",
-    legalView: "/hub/legal/:document",
+    legalView: "/hub/legal/:slug/*",
 
     support: "/hub/support",
 

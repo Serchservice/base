@@ -1,7 +1,7 @@
 .legal-container {
     width: 100%;
     display: flex;
-    padding: 32px;
+    padding: 42px 128px;
     overflow: auto;
     min-height: 100vh;
     align-items: center;
@@ -57,6 +57,7 @@
     display: flex;
     align-items: flex-start;
     flex-direction: column;
+    margin-bottom: 60px;
 }
 
 .legal-text {
@@ -64,4 +65,22 @@
     font-style: normal;
     font-weight: 600;
     margin-bottom: 16px;
+}
+
+@media(max-width: 991px) {
+    .legal-container {
+        padding: 42px 92px;
+    }
+}
+
+@media(max-width: 767px) {
+    .legal-container {
+        padding: 42px 54px;
+    }
+}
+
+@media(max-width: 480px) {
+    .legal-container {
+        padding: 42px 32px;
+    }
 }

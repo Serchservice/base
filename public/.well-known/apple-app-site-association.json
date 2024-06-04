@@ -3,11 +3,15 @@
         "apps": [],
         "details": [
             {
-                "appID": "S8QB4VV633.serch.provider.app",
+                "appID": "S8QB4VV633.com.serch.provider",
                 "paths": ["*"]
             },
             {
-                "appID": "S8QB4VV633.serch.user.app",
+                "appID": "S8QB4VV633.com.serch.user",
+                "paths": ["*"]
+            },
+            {
+                "appID": "S8QB4VV633.com.serch.business",
                 "paths": ["*"]
             }
         ]
