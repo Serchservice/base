@@ -1,35 +1,99 @@
-import React from 'react'
+import React from "react";
+import { Helmet } from "react-helmet";
+import "./legalDocument.css";
+import Assets from "../../assets/Assets";
+import Footer from "../../components/footer/Footer";
+import Shimmer from "../../components/shimmer/Shimmer";
+import Header from "../../components/header/Header";
+import { useContentful } from 'react-contentful';
+import { useNavigate, useParams } from "react-router-dom";
+import { wait } from "@testing-library/user-event/dist/utils";
+import Links from "../../config/Links";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
-import { Helmet } from 'react-helmet'
+const LegalDocument = () => {
+    const { slug } = useParams()
+    const navigate = useNavigate()
 
-import NavbarInteractive from '../components/navbar-interactive'
-import './legal-document.css'
+    const { data, error, fetched, loading } = useContentful({
+        contentType: 'legalDocument',
+        query: {
+            'fields.slug[in]': `${slug || ''}`,
+        }
+    });
 
-const LegalDocument = (props) => {
-  return (
-    <div className="legal-document-container">
-      <Helmet>
-        <title>LegalDocument - Serch - Service made easy</title>
-        <meta
-          name="description"
-          content="A requestSharing and provideSharing platform connecting users to artisans of these categories:\n1. Mechanics\n2. Plumbers\n3. Electricians\n4. Carpenters"
-        />
-        <meta
-          property="og:title"
-          content="LegalDocument - Serch - Service made easy"
-        />
-        <meta
-          property="og:description"
-          content="We connect you to mechanics, electricians, plumbers and carpenters that are closer to you. Request, Provide, Earn."
-        />
-        <meta
-          property="og:image"
-          content="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/f39175c2-e559-4e7d-a107-d475736a4c55/7be9c128-dfa0-44f7-9412-c8610193beb1?org_if_sml=1&amp;force_format=original"
-        />
-      </Helmet>
-      <NavbarInteractive rootClassName="navbar-interactive-root-class-name24"></NavbarInteractive>
-    </div>
-  )
-}
+    async function redirect(route = '', duration = 1000) {
+        await wait(duration)
+        navigate(route)
+    }
 
-export default LegalDocument
+    function back() {
+        navigate(Links.legal)
+    }
+
+    const options = {
+        preserveWhitespace: true,
+    };
+
+    if(loading || !fetched || error) {
+        return (
+            <div className="legal-document-container">
+                <Helmet>
+                    <title>Legal Hub | Serch</title>
+                    <meta name="description" content="Serch legal documents on different policies and guidelines" />
+                    <meta property="og:title" content="Legal Hub | Serch" />
+                    <meta property="og:description" content="Serch legal documents on different policies and guidelines" />
+                    <meta property="og:image" content={Assets.logo} />
+                </Helmet>
+                <Header />
+                <div className="legal-document-header">
+                    <Icon icon="solar:arrow-left-line-duotone" onClick={back} data-role="accordion-icon" className="legal-document-icon" />
+                    <div className="legal-document-header-container">
+                        <Shimmer height={30} width={200} />
+                    </div>
+                </div>
+                <div className="legal-document">
+                    <div style={{ width: "100%" }}>
+                        <div style={{ marginBottom: "10px", width: "100%", height: "30px" }}>
+                            <Shimmer height={30} width={300} />
+                        </div>
+                        <div style={{ marginBottom: "40px", width: "100%", height: "20px" }}>
+                            <Shimmer height={20} width={100} />
+                        </div>
+                        <div style={{ marginBottom: "60px", width: "100%", height: "20px" }}>
+                            <Shimmer height={20} width={200} />
+                        </div>
+                        <Shimmer height={300} percentWidth="100%" />
+                    </div>
+                </div>
+                <Footer />
+            </div>
+        );
+    } else if(!data) {
+        redirect(Links.error)
+    } else {
+        return (
+            <div className="legal-document-container">
+                <Helmet>
+                    <title>{data["items"]['0']['fields']['header']} - Legal Hub | Serch</title>
+                    <meta name="description" content="Serch legal documents on different policies and guidelines" />
+                    <meta property="og:title" content="Legal Hub | Serch" />
+                    <meta property="og:description" content="Serch legal documents on different policies and guidelines" />
+                    <meta property="og:image" content={Assets.logo} />
+                </Helmet>
+                <Header />
+                <div className="legal-document-header">
+                    <Icon icon="solar:arrow-left-line-duotone" onClick={back} data-role="accordion-icon" className="legal-document-icon" />
+                    <div className="legal-document-header-container">
+                        <span className="legal-document-header-text">{ data["items"]['0']['fields']['header'] }</span>
+                    </div>
+                </div>
+                <div className="legal-document">{ documentToReactComponents(data["items"]['0']['fields']['legal'], options) }</div>
+                <Footer />
+            </div>
+        );
+    }
+};
+
+export default LegalDocument;

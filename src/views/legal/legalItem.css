@@ -10,10 +10,12 @@
     align-items: center;
     border-radius: 16px;
     background-color: #f2f2f2;
+    margin-bottom: 16px;
 }
 
 .legal-item-legal:hover {
     background-color: #eaeaea;
+    cursor: pointer;
 }
 
 .legal-item-text {
@@ -23,7 +25,7 @@
 }
 
 .legal-item-categories {
-    gap: 16px;
+    gap: 10px;
     flex: 1;
     display: flex;
     flex-wrap: wrap;
@@ -36,12 +38,9 @@
     width: auto;
     display: flex;
     align-items: center;
-    padding-top: 8px;
-    padding-left: 12px;
+    padding: 4px 12px;
     border-radius: 14px;
-    padding-right: 12px;
     flex-direction: column;
-    padding-bottom: 8px;
     background-color: #141414;
 }
 
@@ -49,5 +48,5 @@
     fill: #ffffff;
     color: #ffffff;
     font-style: normal;
-    font-weight: 500;
+    font-size: 12px;
 }

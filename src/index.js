@@ -1,8 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { ContentfulClient, ContentfulProvider } from 'react-contentful';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import './style.css'
+import './index.css'
 import reportWebVitals from './reportWebVitals';
 import ScrollToTop from './api/ScrollToTop';
 import Home from './views/home/Home';
@@ -36,8 +38,14 @@ import { SnackbarProvider } from 'notistack';
 import { DataProvider } from './api/DataProvider';
 import UnsubscribeNewsletter from './views/newsletter/unsubscribe-newsletter';
 import Legal from './views/legal/Legal';
+import LegalDocument from './views/legal/LegalDocument';
 
 const App = () => {
+    const contentfulClient = new ContentfulClient({
+        accessToken: process.env.REACT_APP_CONTENTFUL_TOKEN,
+        space: process.env.REACT_APP_CONTENTFUL_SPACE,
+    });
+
     return (
         <>
             <SnackbarProvider
@@ -49,53 +57,55 @@ const App = () => {
                     info: 'ℹ️ ',
                 }}
             />
-            <Router>
-                <ScrollToTop>
-                    <Routes>
-                        <Route element={ <Home /> } exact path={ Links.home } />
-                        <Route element={ <AboutUs /> } path={ Links.aboutUs } />
-                        {/* <Route element={ <AboutUs /> } path={ Links.blogs } /> */}
-                        {/* <Route element={ <Home /> } path={ Links.blog } /> */}
-                        <Route element={ <Business /> } path={ Links.business } />
-                        <Route element={ <Careers /> } path={ Links.careers } />
-                        <Route element={ <CountriesInSerch /> } path={ Links.countries } />
-                        <Route element={ <Error /> } path="*" />
-                        <Route element={ <Guest /> } path={ Links.guest } />
-                        <Route element={ <Leadership /> } path={ Links.leadership } />
-                        <Route element={ <Legal /> } path={ Links.legal } />
-                        {/* <Route element={ <Home /> } path={ Links.legalView } /> */}
-                        <Route element={ <MarketPlace /> } path={ Links.marketplace } />
-                        <Route element={ <MediaAndAssets /> } path={ Links.mediaAndAssets } />
-                        {/* <Route element={ <Home /> } path={ Links.news } /> */}
-                        {/* <Route element={ <Home /> } path={ Links.newsroom } /> */}
-                        <Route element={ <Provide /> } path={ Links.provide } />
-                        <Route element={ <ProvideSharing /> } path={ Links.provideSharing } />
-                        <Route element={ <Providing /> } path={ Links.providing } />
-                        <Route element={ <Request /> } path={ Links.request } />
-                        <Route element={ <Requesting /> } path={ Links.requesting } />
-                        <Route element={ <RequestSharing /> } path={ Links.requestSharing } />
-                        <Route element={ <Reserve /> } path={ Links.schedule } />
-                        <Route element={ <SafetyGuidelines /> } path={ Links.safety } />
-                        <Route element={ <SupportHub /> } path={ Links.support } />
-                        {/* <Route element={ <Tip2Fix /> } path={ Links.tip2fix } /> */}
-                        <Route element={ <Verification /> } path={ Links.verification } />
-                        {/* <Route element={ <Search /> } path={ Links.search } />
-                        <Route path={ Links.category } element={ <CategoryPage /> }>
-                            <Route index element={ <Category /> }/>
-                            <Route path={ Links.section } element={ <SectionPage /> }>
-                                <Route index element={ <Section /> }/>
-                                <Route path={ Links.faq } element={ <Help /> } />
-                            </Route>
-                        </Route> */}
-                        <Route element={ <VerifyAccountSetup /> } path={ Links.verifyAccountSetup } />
-                        <Route element={ <AssociateAccountSetup /> } path={ Links.associateAccountSetup } />
-                        <Route element={ <VerifyCertificate /> } path={ Links.verifyCertificate } />
-                        <Route element={ <ViewCertificate /> } path={ Links.viewCertificate } />
-                        <Route element={ <VerifyPayment /> } path={ Links.verifyPayment } />
-                        <Route element={ <UnsubscribeNewsletter /> } path={ Links.unsubscribeNewsletter } />
-                    </Routes>
-                </ScrollToTop>
-            </Router>
+            <ContentfulProvider client={contentfulClient}>
+                <Router>
+                    <ScrollToTop>
+                        <Routes>
+                            <Route element={ <Home /> } exact path={ Links.home } />
+                            <Route element={ <AboutUs /> } path={ Links.aboutUs } />
+                            {/* <Route element={ <AboutUs /> } path={ Links.blogs } /> */}
+                            {/* <Route element={ <Home /> } path={ Links.blog } /> */}
+                            <Route element={ <Business /> } path={ Links.business } />
+                            <Route element={ <Careers /> } path={ Links.careers } />
+                            <Route element={ <CountriesInSerch /> } path={ Links.countries } />
+                            <Route element={ <Error /> } path="*" />
+                            <Route element={ <Guest /> } path={ Links.guest } />
+                            <Route element={ <Leadership /> } path={ Links.leadership } />
+                            <Route element={ <Legal /> } path={ Links.legal } />
+                            <Route element={ <LegalDocument /> } path={ Links.legalView } />
+                            <Route element={ <MarketPlace /> } path={ Links.marketplace } />
+                            <Route element={ <MediaAndAssets /> } path={ Links.mediaAndAssets } />
+                            {/* <Route element={ <Home /> } path={ Links.news } /> */}
+                            {/* <Route element={ <Home /> } path={ Links.newsroom } /> */}
+                            <Route element={ <Provide /> } path={ Links.provide } />
+                            <Route element={ <ProvideSharing /> } path={ Links.provideSharing } />
+                            <Route element={ <Providing /> } path={ Links.providing } />
+                            <Route element={ <Request /> } path={ Links.request } />
+                            <Route element={ <Requesting /> } path={ Links.requesting } />
+                            <Route element={ <RequestSharing /> } path={ Links.requestSharing } />
+                            <Route element={ <Reserve /> } path={ Links.schedule } />
+                            <Route element={ <SafetyGuidelines /> } path={ Links.safety } />
+                            <Route element={ <SupportHub /> } path={ Links.support } />
+                            {/* <Route element={ <Tip2Fix /> } path={ Links.tip2fix } /> */}
+                            <Route element={ <Verification /> } path={ Links.verification } />
+                            {/* <Route element={ <Search /> } path={ Links.search } />
+                            <Route path={ Links.category } element={ <CategoryPage /> }>
+                                <Route index element={ <Category /> }/>
+                                <Route path={ Links.section } element={ <SectionPage /> }>
+                                    <Route index element={ <Section /> }/>
+                                    <Route path={ Links.faq } element={ <Help /> } />
+                                </Route>
+                            </Route> */}
+                            <Route element={ <VerifyAccountSetup /> } path={ Links.verifyAccountSetup } />
+                            <Route element={ <AssociateAccountSetup /> } path={ Links.associateAccountSetup } />
+                            <Route element={ <VerifyCertificate /> } path={ Links.verifyCertificate } />
+                            <Route element={ <ViewCertificate /> } path={ Links.viewCertificate } />
+                            <Route element={ <VerifyPayment /> } path={ Links.verifyPayment } />
+                            <Route element={ <UnsubscribeNewsletter /> } path={ Links.unsubscribeNewsletter } />
+                        </Routes>
+                    </ScrollToTop>
+                </Router>
+            </ContentfulProvider>
         </>
     )
 }

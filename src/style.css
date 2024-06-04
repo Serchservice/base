@@ -141,7 +141,6 @@
     border-bottom-width: 4px;
 }
 
-
 .section-head {
     color: rgb(128, 255, 68);
     font-style: normal;
@@ -328,10 +327,6 @@
     text-decoration: none;
 }
 
-* {
-    font-family: Nunito;
-}
-
 @media(max-width: 991px) {
     .hoverButton {
         flex: 1;
@@ -360,23 +355,4 @@
     .mouse {
         height: 40px;
     }
-}
-
-/* Style the scrollbar */
-/* For WebKit browsers */
-::-webkit-scrollbar {
-    width: 4px;
-    cursor: pointer;
-}
-
-  /* For WebKit browsers - Track */
-::-webkit-scrollbar-track {
-    background: transparent; /* Adjust as needed */
-}
-
-  /* For WebKit browsers - Thumb */
-::-webkit-scrollbar-thumb {
-    background: #030001;
-    border-radius: 5px; /* Adjust as needed */
-    cursor: pointer;
 }
