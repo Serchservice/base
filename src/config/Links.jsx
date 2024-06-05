@@ -5,10 +5,11 @@ const Links = {
     aboutUs: "/about-us",
 
     blogs: "/blogs",
-    blog: "/blogs/:id",
+    blog: "/blogs/:slug",
 
     newsroom: "/newsroom",
-    news: "/newsroom/:news",
+    news: "/newsroom/news",
+    newsContent: "/newsroom/news/:slug",
 
     marketplace: "/marketplace",
     careers: "/careers",

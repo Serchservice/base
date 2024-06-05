@@ -39,6 +39,11 @@ import { DataProvider } from './api/DataProvider';
 import UnsubscribeNewsletter from './views/newsletter/unsubscribe-newsletter';
 import Legal from './views/legal/Legal';
 import LegalDocument from './views/legal/LegalDocument';
+import Newsroom from './views/newsroom/Newsroom';
+import News from './views/newsroom/News';
+import NewsContent from './views/newsroom/NewsContent';
+import Blog from './views/blog/Blog';
+import Blogs from './views/blog/Blogs';
 
 const App = () => {
     const contentfulClient = new ContentfulClient({
@@ -61,22 +66,16 @@ const App = () => {
                 <Router>
                     <ScrollToTop>
                         <Routes>
+                            /// Common Routes
                             <Route element={ <Home /> } exact path={ Links.home } />
                             <Route element={ <AboutUs /> } path={ Links.aboutUs } />
-                            {/* <Route element={ <AboutUs /> } path={ Links.blogs } /> */}
-                            {/* <Route element={ <Home /> } path={ Links.blog } /> */}
                             <Route element={ <Business /> } path={ Links.business } />
                             <Route element={ <Careers /> } path={ Links.careers } />
                             <Route element={ <CountriesInSerch /> } path={ Links.countries } />
                             <Route element={ <Error /> } path="*" />
                             <Route element={ <Guest /> } path={ Links.guest } />
-                            <Route element={ <Leadership /> } path={ Links.leadership } />
-                            <Route element={ <Legal /> } path={ Links.legal } />
-                            <Route element={ <LegalDocument /> } path={ Links.legalView } />
                             <Route element={ <MarketPlace /> } path={ Links.marketplace } />
                             <Route element={ <MediaAndAssets /> } path={ Links.mediaAndAssets } />
-                            {/* <Route element={ <Home /> } path={ Links.news } /> */}
-                            {/* <Route element={ <Home /> } path={ Links.newsroom } /> */}
                             <Route element={ <Provide /> } path={ Links.provide } />
                             <Route element={ <ProvideSharing /> } path={ Links.provideSharing } />
                             <Route element={ <Providing /> } path={ Links.providing } />
@@ -88,20 +87,26 @@ const App = () => {
                             <Route element={ <SupportHub /> } path={ Links.support } />
                             {/* <Route element={ <Tip2Fix /> } path={ Links.tip2fix } /> */}
                             <Route element={ <Verification /> } path={ Links.verification } />
-                            {/* <Route element={ <Search /> } path={ Links.search } />
-                            <Route path={ Links.category } element={ <CategoryPage /> }>
-                                <Route index element={ <Category /> }/>
-                                <Route path={ Links.section } element={ <SectionPage /> }>
-                                    <Route index element={ <Section /> }/>
-                                    <Route path={ Links.faq } element={ <Help /> } />
-                                </Route>
-                            </Route> */}
+
+                            /// Routes with dynamic content
                             <Route element={ <VerifyAccountSetup /> } path={ Links.verifyAccountSetup } />
                             <Route element={ <AssociateAccountSetup /> } path={ Links.associateAccountSetup } />
                             <Route element={ <VerifyCertificate /> } path={ Links.verifyCertificate } />
                             <Route element={ <ViewCertificate /> } path={ Links.viewCertificate } />
                             <Route element={ <VerifyPayment /> } path={ Links.verifyPayment } />
                             <Route element={ <UnsubscribeNewsletter /> } path={ Links.unsubscribeNewsletter } />
+
+                            /// Routes for information
+                            <Route element={ <Newsroom /> } path={ Links.newsroom } />
+                            <Route element={ <News /> } path={ Links.news } />
+                            <Route element={ <NewsContent /> } path={ Links.newsContent } />
+                            <Route element={ <Blogs /> } path={ Links.blogs } />
+                            <Route element={ <Blog /> } path={ Links.blog } />
+                            <Route element={ <Leadership /> } path={ Links.leadership } />
+
+                            /// Routes for legal documentation
+                            <Route element={ <Legal /> } path={ Links.legal } />
+                            <Route element={ <LegalDocument /> } path={ Links.legalView } />
                         </Routes>
                     </ScrollToTop>
                 </Router>
