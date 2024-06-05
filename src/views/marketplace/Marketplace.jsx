@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import './marketplace.css'
-import Assets from '../../assets/Assets'
 import Header from '../../components/header/Header'
 import CountriesInSerch from '../../components/countries-in-serch/CountriesInSerch'
 import Footer from '../../components/footer/Footer'
@@ -18,7 +17,7 @@ const MarketPlace = () => {
                 <meta name="description" content="Learn about our products, services and offerings" />
                 <meta property="og:title" content="Marketplace | Serch" />
                 <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ Assets.logo } />
+                <meta property="og:image" content={ LinkAssets.logo } />
             </Helmet>
             <Header />
             <h1 className="market-place-text">Your one-stop search for services</h1>

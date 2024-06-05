@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useContentful } from 'react-contentful';
 import { Helmet } from 'react-helmet';
-import Assets from '../../assets/Assets';
 import Footer from '../../components/footer/Footer';
 import Shimmer from '../../components/shimmer/Shimmer';
 import ItemGenerator from '../../config/ItemGenerator';
@@ -9,6 +8,7 @@ import BlogItem from './widgets/BlogItem';
 import './blogs.css';
 import BlogHeader from './widgets/BlogHeader';
 import Util from '../../config/Util';
+import LinkAssets from '../../assets/LinkAssets';
 
 const Blogs = () => {
     const [blogs, setBlog] = useState([]);
@@ -38,7 +38,7 @@ const Blogs = () => {
                     <meta name="description" content="Read through Serchservice blogs and gain more knowledge about us" />
                     <meta property="og:title" content="Blogs | Serch" />
                     <meta property="og:description" content="Read through Serchservice blogs and gain more knowledge about us" />
-                    <meta property="og:image" content={Assets.logo} />
+                    <meta property="og:image" content={ LinkAssets.logo } />
                 </Helmet>
                 <BlogHeader />
                 <div className="blogs-content-description">
@@ -61,7 +61,7 @@ const Blogs = () => {
                     <meta name="description" content="Read through Serchservice blogs and gain more knowledge about us" />
                     <meta property="og:title" content="Blog | Serch" />
                     <meta property="og:description" content="Read through Serchservice blogs and gain more knowledge about us" />
-                    <meta property="og:image" content={Assets.logo} />
+                    <meta property="og:image" content={ LinkAssets.logo } />
                 </Helmet>
                 <BlogHeader />
                 <div className="blogs-content-description">

@@ -39,7 +39,7 @@ const Provide = () => {
                 <meta name="description" content="Learn what it takes to become our partner" />
                 <meta property="og:title" content="Provide | Serch" />
                 <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ Assets.logo } />
+                <meta property="og:image" content={ LinkAssets.logo } />
             </Helmet>
             <Header />
             <div className="provide-header">

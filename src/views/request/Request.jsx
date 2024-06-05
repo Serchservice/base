@@ -34,7 +34,7 @@ const Request = () => {
                 <meta name="description" content="Start requesting the services you prefer" />
                 <meta property="og:title" content="Request | Serch" />
                 <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ Assets.logo } />
+                <meta property="og:image" content={ LinkAssets.logo } />
             </Helmet>
             <Header />
             <section className="request-section">

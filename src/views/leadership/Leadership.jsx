@@ -3,10 +3,10 @@ import { Helmet } from 'react-helmet'
 import './leadership.css'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
-import Assets from '../../assets/Assets'
 import ItemGenerator from '../../config/ItemGenerator'
 import Shimmer from '../../components/shimmer/Shimmer'
 import { useContentful } from 'react-contentful';
+import LinkAssets from '../../assets/LinkAssets'
 
 const Leadership = () => {
     const { data, error, fetched, loading } = useContentful({ contentType: 'teamGroup' });
@@ -19,7 +19,7 @@ const Leadership = () => {
                     <meta name="description" content="Serch governance and structure" />
                     <meta property="og:title" content="Leadership | Serch" />
                     <meta property="og:description" content="A requestSharing and provideSharing company" />
-                    <meta property="og:image" content={Assets.logo} />
+                    <meta property="og:image" content={ LinkAssets.logo } />
                 </Helmet>
                 <Header />
                 <div className="leadership-container1">
@@ -77,7 +77,7 @@ const Leadership = () => {
                     <meta name="description" content="Serch governance and structure" />
                     <meta property="og:title" content="Leadership | Serch" />
                     <meta property="og:description" content="A requestSharing and provideSharing company" />
-                    <meta property="og:image" content={Assets.logo} />
+                    <meta property="og:image" content={ LinkAssets.logo } />
                 </Helmet>
                 <Header />
                 <div className="leadership-container1">

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Helmet } from 'react-helmet'
-import Assets from '../../assets/Assets'
 import Footer from '../../components/footer/Footer'
 import Header from '../../components/header/Header'
 import Loading from '../../components/loading/Loading'
@@ -10,6 +9,7 @@ import Links from '../../config/Links'
 import { Axios } from '../../api/Axios'
 import SweetAlert from '../../config/SweetAlert'
 import { wait } from '@testing-library/user-event/dist/utils'
+import LinkAssets from '../../assets/LinkAssets'
 
 const VerifyAccountSetup = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -73,7 +73,7 @@ const VerifyAccountSetup = () => {
                 <meta name="description" content="An invite link to join the Serch platform as an associate provider" />
                 <meta property="og:title" content="You are invited | Serch" />
                 <meta property="og:description" content="An invite link to join the Serch platform as an associate provider" />
-                <meta property="og:image" content={ Assets.logo } />
+                <meta property="og:image" content={ LinkAssets.logo } />
             </Helmet>
             <Header />
             <div className="associate-account-setup-body">

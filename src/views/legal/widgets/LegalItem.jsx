@@ -1,7 +1,7 @@
 import React from 'react'
-import './legalItem.css'
 import { Link } from 'react-router-dom'
-import Links from '../../config/Links'
+import Links from '../../../config/Links'
+import './legalItem.css'
 
 const LegalItem = ({title = '', categories = [], slug = ''}) => {
     return (

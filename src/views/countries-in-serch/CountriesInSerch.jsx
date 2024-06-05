@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
 import './countries-in-serch.css'
-import Assets from '../../assets/Assets'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
+import LinkAssets from '../../assets/LinkAssets'
 
 const CountriesInSerch = () => {
     const [ countries, setCountries ] = useState([
@@ -29,15 +29,15 @@ const CountriesInSerch = () => {
                 <meta name="description" content="View all the countries and states we are launched in" />
                 <meta property="og:title" content="Countries In Serch | Serch" />
                 <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ Assets.logo } />
+                <meta property="og:image" content={ LinkAssets.logo } />
             </Helmet>
             <Header />
             <div className="countries-in-serch-heading">
-                <h1 className="countries-in-serch-text">
+                <h1 className="countries-in-serch-heading-title">
                     <span>Countries in Serch</span>
                     <br></br>
                 </h1>
-                <span className="countries-in-serch-text3">
+                <span className="countries-in-serch-heading-subtitle">
                     Request for services in your country, most especially, in your city.
                     See countries and cities where Serch is available.
                 </span>
@@ -46,15 +46,15 @@ const CountriesInSerch = () => {
                 {
                     countries.map((value, key) => {
                         return (
-                            <div className="countries-in-serch-container1" key={ key }>
-                                <span className="countries-in-serch-text4">{ value.country }</span>
-                                <div className="countries-in-serch-container2">
+                            <div className="countries-in-serch-content" key={ key }>
+                                <span className="countries-in-serch-content-title">{ value.country }</span>
+                                <div className="countries-in-serch-content-body">
                                     {
                                         value.states.map((value, key) => {
                                             return (
                                                 <div className="countries-in-serch-cities" key={ key }>
                                                     <span className="countries-in-serch-city">{ value[1] }</span>
-                                                    <span className="countries-in-serch-city1">{ value[2] }</span>
+                                                    <span className="countries-in-serch-city">{ value[2] }</span>
                                                 </div>
                                             )
                                         })

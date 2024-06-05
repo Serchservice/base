@@ -6,7 +6,6 @@ import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 import DownloadUserApp from '../../components/app-download/DownloadUserApp'
 import LinkAssets from '../../assets/LinkAssets'
-import Assets from '../../assets/Assets'
 import Links from '../../config/Links'
 import FasterCapital from '../../components/fastercapital/FasterCapital'
 
@@ -46,7 +45,7 @@ const Home = () => {
                 <meta name="description" content="Service made easy" />
                 <meta property="og:title" content="Home | Serch" />
                 <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ Assets.logo } />
+                <meta property="og:image" content={ LinkAssets.logo } />
             </Helmet>
             <Header />
             <section className="home-section">

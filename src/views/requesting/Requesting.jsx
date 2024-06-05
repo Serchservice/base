@@ -18,7 +18,7 @@ const Requesting = () => {
                 <meta name="description" content="Understand how requesting works in Serch" />
                 <meta property="og:title" content="Requesting | Serch" />
                 <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ Assets.logo } />
+                <meta property="og:image" content={ LinkAssets.logo } />
             </Helmet>
             <Header />
             <section className="requesting-section">

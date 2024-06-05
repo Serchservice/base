@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import './associate-account-setup.css'
 import Header from '../../components/header/Header'
-import Assets from '../../assets/Assets'
 import Footer from '../../components/footer/Footer'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import Loader from '../../components/loading/Loader'
@@ -11,6 +10,7 @@ import DeviceInfo from '../../api/DeviceInfo'
 import { Axios } from '../../api/Axios'
 import { wait } from '@testing-library/user-event/dist/utils'
 import Links from '../../config/Links'
+import LinkAssets from '../../assets/LinkAssets'
 
 const AssociateAccountSetup = () => {
     const [name, setName] = useState("")
@@ -98,7 +98,7 @@ const AssociateAccountSetup = () => {
                 <meta name="description" content="Join the Serch platform as an associate provider and increase your earnings" />
                 <meta property="og:title" content="Setup your associate account | Serch" />
                 <meta property="og:description" content="Join the Serch platform as an associate provider and increase your earnings" />
-                <meta property="og:image" content={ Assets.logo } />
+                <meta property="og:image" content={ LinkAssets.logo } />
             </Helmet>
             <Header />
             <div className="associate-account-setup-body">
@@ -151,5 +151,3 @@ const AssociateAccountSetup = () => {
 }
 
 export default AssociateAccountSetup
-
-/// http://localhost:3000/auth/associate/verify?invite=eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiQVNTT0NJQVRFX1BST1ZJREVSIiwiYnVzaW5lc3MiOiJiMDcyOWQ1Zi0xNzI4LTQ0ZmYtYTBlNi1kM2YyMzAwNTBiYzQiLCJ1c2VyIjoiM2Y4MDZiNWUtNzUwNC00MGIyLWIyNTUtZTI4MTFmNmQ3MTEzIiwic3ViIjoibWFlc3Ryb21lcnZvQGdtYWlsLmNvbSIsImlzcyI6IlNlcmNoIiwiaWF0IjoxNzE3MzMwNjE5fQ.ymQuqH2ZxhnlnGfUJ_yxv4lWeeEXLJFWuXEYye5AvSAXsKB3Xosx3V1ybwE0tz4505kshgEkdFWSLE0MjL5Qrw&role=ASSOCIATE_PROVIDER&platform=provider
