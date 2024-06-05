@@ -1,16 +1,16 @@
-import React from "react";
-import { Helmet } from "react-helmet";
-import "./legalDocument.css";
-import Assets from "../../assets/Assets";
-import Footer from "../../components/footer/Footer";
-import Shimmer from "../../components/shimmer/Shimmer";
-import Header from "../../components/header/Header";
-import { useContentful } from 'react-contentful';
-import { useNavigate, useParams } from "react-router-dom";
-import { wait } from "@testing-library/user-event/dist/utils";
-import Links from "../../config/Links";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { wait } from "@testing-library/user-event/dist/utils";
+import React from "react";
+import { useContentful } from 'react-contentful';
+import { Helmet } from "react-helmet";
+import { useNavigate, useParams } from "react-router-dom";
+import Assets from "../../assets/Assets";
+import ContentRender from "../../components/contentful/ContentRender";
+import Footer from "../../components/footer/Footer";
+import Header from "../../components/header/Header";
+import Shimmer from "../../components/shimmer/Shimmer";
+import Links from "../../config/Links";
+import "./legalDocument.css";
 
 const LegalDocument = () => {
     const { slug } = useParams()
@@ -77,9 +77,9 @@ const LegalDocument = () => {
             <div className="legal-document-container">
                 <Helmet>
                     <title>{data["items"]['0']['fields']['header']} - Legal Hub | Serch</title>
-                    <meta name="description" content="Serch legal documents on different policies and guidelines" />
-                    <meta property="og:title" content="Legal Hub | Serch" />
-                    <meta property="og:description" content="Serch legal documents on different policies and guidelines" />
+                    <meta name="description" content={data["items"]['0']['fields']['description']} />
+                    <meta property="og:title" content={`${data["items"]['0']['fields']['header']} - Legal Hub | Serch`} />
+                    <meta property="og:description" content={data["items"]['0']['fields']['description']} />
                     <meta property="og:image" content={Assets.logo} />
                 </Helmet>
                 <Header />
@@ -89,7 +89,7 @@ const LegalDocument = () => {
                         <span className="legal-document-header-text">{ data["items"]['0']['fields']['header'] }</span>
                     </div>
                 </div>
-                <div className="legal-document">{ documentToReactComponents(data["items"]['0']['fields']['legal'], options) }</div>
+                <div className="legal-document"><ContentRender content={data["items"]['0']['fields']['legal']}/></div>
                 <Footer />
             </div>
         );

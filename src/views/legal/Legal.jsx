@@ -38,28 +38,35 @@ const Legal = () => {
     }, [data])
 
     const search = (search = '') => {
-        if(search !== '') {
+        if (search !== '') {
             const lowerCase = search.toLowerCase();
-            const filteredData = legals.filter(legalGroup => {
-                return legalGroup.group.toLowerCase().includes(lowerCase) ||
-                    legalGroup.legals.some(legal =>
-                        legal.header.toLowerCase().includes(lowerCase) ||
-                        legal.slug.toLowerCase().includes(lowerCase) ||
-                        legal.categories.some(category => category.toLowerCase().includes(lowerCase))
-                    );
-            });
+            const filteredData = legals.map(legalGroup => {
+                const filteredLegals = legalGroup.legals.filter(legal =>
+                    legal.header.toLowerCase().includes(lowerCase) ||
+                    legal.slug.toLowerCase().includes(lowerCase) ||
+                    legal.categories.some(category => category.toLowerCase().includes(lowerCase))
+                );
+
+                // Return the legal group with only the filtered legals
+                return {
+                    ...legalGroup,
+                    legals: filteredLegals
+                };
+            }).filter(legalGroup => legalGroup.legals.length > 0 || legalGroup.group.toLowerCase().includes(lowerCase));
 
             // Sort the legals to ensure the group "GENERAL" is first
-            const sortedLegals = filteredData.sort((a, b) => {
+            const sortedFilteredData = filteredData.sort((a, b) => {
                 if (a.group.toUpperCase() === 'GENERAL') return -1;
                 if (b.group.toUpperCase() === 'GENERAL') return 1;
                 return 0;
             });
-            setFilteredLegals(sortedLegals);
+
+            setFilteredLegals(sortedFilteredData);
         } else {
-            setFilteredLegals(legals)
+            setFilteredLegals(legals);
         }
-    }
+    };
+
 
     if (loading || !fetched || error || !data) {
         return (

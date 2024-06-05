@@ -1,164 +1,196 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-
+import { Icon } from '@iconify/react/dist/iconify.js'
+import React, { useEffect, useRef, useState } from 'react'
+import { useContentful } from 'react-contentful'
 import { Helmet } from 'react-helmet'
-
-import RecentNewsLink from '../components/recent-news-link'
+import { Link } from 'react-router-dom'
+import Assets from '../../assets/Assets'
+import Footer from '../../components/footer/Footer'
+import Shimmer from '../../components/shimmer/Shimmer'
+import Links from '../../config/Links'
 import './newsroom.css'
+import NewsHeader from './widgets/NewsHeader'
+import RecentNewsLink from './widgets/RecentNewsLink'
+import Util from '../../config/Util'
 
-const Newsroom = (props) => {
-    return (
-        <div className="newsroom-container">
-            <Helmet>
-                <title>Newsroom - Serch - Service made easy</title>
-                <meta
-                    name="description"
-                    content="A requestSharing and provideSharing platform connecting users to artisans of these categories:\n1. Mechanics\n2. Plumbers\n3. Electricians\n4. Carpenters"
-                />
-                <meta
-                    property="og:title"
-                    content="Newsroom - Serch - Service made easy"
-                />
-                <meta
-                    property="og:description"
-                    content="We connect you to mechanics, electricians, plumbers and carpenters that are closer to you. Request, Provide, Earn."
-                />
-                <meta
-                    property="og:image"
-                    content="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/28351bdc-3449-4503-8b78-e4485090ff87/7be9c128-dfa0-44f7-9412-c8610193beb1?org_if_sml=1&amp;force_format=original"
-                />
-            </Helmet>
-            <header data-thq="thq-navbar" className="newsroom-navbar-interactive">
-                <span className="newsroom-text">
-                    <span className="newsroom-text01">Serch</span>
-                    <span className="newsroom-text02">
-                        <span
-                            dangerouslySetInnerHTML={{
-                                __html: ' ',
-                            }}
-                        />
-                    </span>
-                    <span className="newsroom-text03">Newsroom</span>
-                </span>
-                <div data-thq="thq-navbar-nav" className="newsroom-desktop-menu">
-                    <nav className="newsroom-links">
-                        <Link to="/about-us" className="newsroom-navlink">
-                            Company
-                        </Link>
-                        <Link to="/leadership" className="newsroom-navlink1">
-                            Leadership
-                        </Link>
-                        <Link to="/media-and-assets" className="newsroom-navlink2">
-                            Media assets
-                        </Link>
-                        <Link to="/blog" className="newsroom-navlink3">
-                            Blog
-                        </Link>
-                    </nav>
+const Newsroom = () => {
+    const [featuredList, setFeaturedList] = useState([]);
+    const [recents, setRecents] = useState([]);
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const [isPlaying, setIsPlaying] = useState(true);
+    const [slideDirection, setSlideDirection] = useState('');
+    const [slideKey, setSlideKey] = useState(0);
+    const intervalRef = useRef(null);
+    const { data, error, fetched, loading } = useContentful({ contentType: 'serchNews' });
+
+    useEffect(() => {
+        if (data) {
+            const news = data["items"].map((item) => ({
+                categories: item.fields.categories,
+                date: item.fields.date,
+                image: item.fields.featuredImage.fields.file.url,
+                imageAlt: item.fields.featuredImage.fields.title,
+                isFeatured: item.fields.isFeatured,
+                slug: item.fields.slug,
+                description: item.fields.description,
+                title: item.fields.title,
+            }));
+            // Sort the items by date in descending order
+            const sorted = news.sort((a, b) => new Date(b.date) - new Date(a.date));
+            // Get the top 5 most recent items (or fewer if the list has less than 5 items)
+            const recents = sorted.slice(0, 5);
+            setRecents(recents);
+            setFeaturedList(sorted.filter((item) => item.isFeatured));
+        }
+    }, [data])
+
+    const startSlideShow = () => {
+        intervalRef.current = setInterval(() => {
+            setCurrentSlide((prevSlide) => {
+                const nextSlide = (prevSlide + 1) % featuredList.length;
+                setSlideKey((prevKey) => prevKey + 1); // Update key to trigger re-render
+                return nextSlide;
+            });
+            setSlideDirection('right');
+        }, 5000); // 5000ms = 5 seconds
+    };
+
+    useEffect(() => {
+        if(featuredList.length > 1) {
+            if (isPlaying) {
+                startSlideShow();
+            }
+            // Cleanup interval on component unmount
+            return () => clearInterval(intervalRef.current);
+        }
+    }, [isPlaying, featuredList.length]);
+
+    const resetInterval = () => {
+        clearInterval(intervalRef.current);
+        if (isPlaying) {
+            startSlideShow();
+        }
+    };
+
+    const handlePlayPause = () => {
+        setIsPlaying(!isPlaying);
+    };
+
+    const handleStop = () => {
+        setIsPlaying(false);
+    };
+
+    const handleNext = () => {
+        setSlideDirection('right');
+        setCurrentSlide((prevSlide) => {
+            const nextSlide = (prevSlide + 1) % featuredList.length;
+            setSlideKey((prevKey) => prevKey + 1); // Update key to trigger re-render
+            return nextSlide;
+        });
+        resetInterval(); // Reset the interval when next is clicked
+    };
+
+    const handlePrev = () => {
+        setSlideDirection('left');
+        setCurrentSlide((prevSlide) => {
+            const prevSlideIndex = (prevSlide - 1 + featuredList.length) % featuredList.length;
+            setSlideKey((prevKey) => prevKey + 1); // Update key to trigger re-render
+            return prevSlideIndex;
+        });
+        resetInterval(); // Reset the interval when previous is clicked
+    };
+
+    if (loading || !fetched || error || !data) {
+        return (
+            <div className="newsroom-container">
+                <Helmet>
+                    <title>Newsroom | Serch</title>
+                    <meta name="description" content="Read through Serchservice news and get latest updates on what's happening" />
+                    <meta property="og:title" content="Newsroom | Serch" />
+                    <meta property="og:description" content="Read through Serchservice news and get latest updates on what's happening" />
+                    <meta property="og:image" content={Assets.logo} />
+                </Helmet>
+                <NewsHeader />
+                <div className="newsroom-content-description">
+                    <h1 className="newsroom-text08">Serch global news</h1>
+                    <span className="newsroom-text09">See the latest updates in &quot;What&apos;s happening at Serch&quot;</span>
                 </div>
-                <div data-thq="thq-burger-menu" className="newsroom-burger-menu">
-                    <svg viewBox="0 0 1024 1024" className="newsroom-icon">
-                        <path d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"></path>
-                    </svg>
+                <div className="newsroom-featured-display">
+                    <div className="newsroom-featured">
+                        <Shimmer height={500} percentWidth="100%" />
+                    </div>
                 </div>
-                <div data-thq="thq-mobile-menu" className="newsroom-mobile-menu">
-                    <div className="newsroom-nav">
-                        <div className="newsroom-top">
-                            <span className="newsroom-text04">
-                                <span className="newsroom-text05">Serch</span>
-                                <span className="newsroom-text06">
-                                    <span
-                                        dangerouslySetInnerHTML={{
-                                            __html: ' ',
-                                        }}
-                                    />
-                                </span>
-                                <span className="newsroom-text07">Newsroom</span>
-                            </span>
-                            <div data-thq="thq-close-menu" className="newsroom-close-menu">
-                                <svg viewBox="0 0 1024 1024" className="newsroom-icon02">
-                                    <path d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"></path>
-                                </svg>
-                            </div>
+                <div className="newsroom-recent">
+                    <Shimmer height={250} percentWidth="100%" />
+                </div>
+                <Footer />
+            </div>
+        )
+    } else {
+        return (
+            <div className="newsroom-container">
+                <Helmet>
+                    <title>Newsroom | Serch</title>
+                    <meta name="description" content="Read through Serchservice news and get latest updates on what's happening" />
+                    <meta property="og:title" content="Newsroom | Serch" />
+                    <meta property="og:description" content="Read through Serchservice news and get latest updates on what's happening" />
+                    <meta property="og:image" content={Assets.logo} />
+                </Helmet>
+                <NewsHeader />
+                <div className="newsroom-content-description">
+                    <h1 className="newsroom-text08">Serch global news</h1>
+                    <span className="newsroom-text09">See the latest updates in &quot;What&apos;s happening at Serch&quot;</span>
+                </div>
+                {
+                    featuredList.length > 0 && (
+                        <div className="newsroom-featured-display">
+                            <Link className={`newsroom-featured ${slideDirection === 'right' ? 'slide-enter-right' : 'slide-enter-left'}`} to={`${Links.newsroom}/news/${featuredList[currentSlide].slug}`} key={slideKey}>
+                                <img src={ featuredList[currentSlide].image } alt={ featuredList[currentSlide].imageAlt } loading="lazy" className="newsroom-image" />
+                                <div className="newsroom-container1">
+                                    <span className="newsroom-date">{Util.formatDate(featuredList[currentSlide].date)}</span>
+                                    <span className="newsroom-header">{ featuredList[currentSlide].title }</span>
+                                    <span className="newsroom-summary">{ featuredList[currentSlide].description }</span>
+                                    <svg viewBox="0 0 1024 1024" className="newsroom-icon10">
+                                        <path d="M512 170l342 342-342 342-60-60 238-240h-520v-84h520l-238-240z"></path>
+                                    </svg>
+                                </div>
+                            </Link>
+                            {
+                                featuredList.length > 1 && (
+                                    <div className="newsroom-controls">
+                                        <Icon icon="mdi:skip-previous" className="newsroom-control" onClick={handlePrev}/>
+                                        {
+                                            isPlaying
+                                                ? <Icon icon="mdi:pause" className="newsroom-control" onClick={handlePlayPause}/>
+                                                : <Icon icon="mdi:play" className="newsroom-control" onClick={handlePlayPause}/>
+                                        }
+                                        <Icon icon="mdi:stop" className="newsroom-control" onClick={handleStop}/>
+                                        <Icon icon="mdi:skip-next" className="newsroom-control" onClick={handleNext}/>
+                                    </div>
+                                )
+                            }
                         </div>
-                        <nav className="newsroom-links1">
-                            <Link to="/about-us" className="newsroom-navlink4">
-                                Company
-                            </Link>
-                            <Link to="/leadership" className="newsroom-navlink5">
-                                Leadership
-                            </Link>
-                            <Link to="/media-and-assets" className="newsroom-navlink6">
-                                Media assets
-                            </Link>
-                            <Link to="/blog" className="newsroom-navlink7">
-                                Blog
-                            </Link>
-                        </nav>
-                    </div>
-                    <div>
-                        <svg
-                            viewBox="0 0 950.8571428571428 1024"
-                            className="newsroom-icon04"
-                        >
-                            <path d="M925.714 233.143c-25.143 36.571-56.571 69.143-92.571 95.429 0.571 8 0.571 16 0.571 24 0 244-185.714 525.143-525.143 525.143-104.571 0-201.714-30.286-283.429-82.857 14.857 1.714 29.143 2.286 44.571 2.286 86.286 0 165.714-29.143 229.143-78.857-81.143-1.714-149.143-54.857-172.571-128 11.429 1.714 22.857 2.857 34.857 2.857 16.571 0 33.143-2.286 48.571-6.286-84.571-17.143-148-91.429-148-181.143v-2.286c24.571 13.714 53.143 22.286 83.429 23.429-49.714-33.143-82.286-89.714-82.286-153.714 0-34.286 9.143-65.714 25.143-93.143 90.857 112 227.429 185.143 380.571 193.143-2.857-13.714-4.571-28-4.571-42.286 0-101.714 82.286-184.571 184.571-184.571 53.143 0 101.143 22.286 134.857 58.286 41.714-8 81.714-23.429 117.143-44.571-13.714 42.857-42.857 78.857-81.143 101.714 37.143-4 73.143-14.286 106.286-28.571z"></path>
-                        </svg>
-                        <svg
-                            viewBox="0 0 877.7142857142857 1024"
-                            className="newsroom-icon06"
-                        >
-                            <path d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z"></path>
-                        </svg>
-                        <svg
-                            viewBox="0 0 602.2582857142856 1024"
-                            className="newsroom-icon08"
-                        >
-                            <path d="M548 6.857v150.857h-89.714c-70.286 0-83.429 33.714-83.429 82.286v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571c0-144.571 88.571-223.429 217.714-223.429 61.714 0 114.857 4.571 130.286 6.857z"></path>
-                        </svg>
+                    )
+                }
+                <div className="newsroom-recent">
+                    <span className="newsroom-recent-text">Recent</span>
+                    <div className="newsroom-recent-news">
+                        {
+                            recents.map((recent, key) => (
+                                <RecentNewsLink
+                                    key={key}
+                                    header={recent.title}
+                                    date={Util.formatDate(recent.date)}
+                                    slug={recent.slug}
+                                />
+                            ))
+                        }
+                        <Link to={ Links.news } className="newsroom-see-all">See all</Link>
                     </div>
                 </div>
-            </header>
-            <div className="newsroom-content-description">
-                <h1 className="newsroom-text08">Serch global news</h1>
-                <span className="newsroom-text09">
-                    See the latest updates in &quot;What&apos;s happening at Serch&quot;
-                </span>
+                <Footer />
             </div>
-            <div className="newsroom-featured-display">
-                <div className="newsroom-featured">
-                    <img
-                        src="https://play.teleporthq.io/static/svg/default-img.svg"
-                        alt="image"
-                        loading="lazy"
-                        className="newsroom-image"
-                    />
-                    <div className="newsroom-container1">
-                        <span className="newsroom-date">May 9, 2024</span>
-                        <span className="newsroom-header">
-                            Getting into FasterCapital&apos;s Incubation Programme
-                        </span>
-                        <span className="newsroom-summary">
-                            Getting into FasterCapital&apos;s Incubation Programme
-                        </span>
-                        <svg viewBox="0 0 1024 1024" className="newsroom-icon10">
-                            <path d="M512 170l342 342-342 342-60-60 238-240h-520v-84h520l-238-240z"></path>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-            <div className="newsroom-recent">
-                <span className="newsroom-recent-text">Recent</span>
-                <div className="newsroom-recent-news">
-                    <RecentNewsLink></RecentNewsLink>
-                    <RecentNewsLink></RecentNewsLink>
-                    <RecentNewsLink></RecentNewsLink>
-                    <Link to="/news" className="newsroom-see-all">
-                        See all
-                    </Link>
-                </div>
-            </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default Newsroom
