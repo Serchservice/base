@@ -23,7 +23,7 @@ const ProvideSharing = () => {
                 <meta name="description" content="Share that provider you find to be the best, earn more" />
                 <meta property="og:title" content="ProvideSharing | Serch" />
                 <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ Assets.logo } />
+                <meta property="og:image" content={ LinkAssets.logo } />
             </Helmet>
             <Header />
             <div className="provideSharing-header">

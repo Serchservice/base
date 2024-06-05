@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { Axios } from '../../api/Axios'
 import DataContext from '../../api/DataProvider'
-import Assets from '../../assets/Assets'
 import Footer from '../../components/footer/Footer'
 import Header from '../../components/header/Header'
 import Loading from '../../components/loading/Loading'
@@ -11,6 +10,7 @@ import SweetAlert from '../../config/SweetAlert'
 import '../associate-account-setup/associate-account-setup.css'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { wait } from '@testing-library/user-event/dist/utils'
+import LinkAssets from '../../assets/LinkAssets'
 
 const VerifyCertificate = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -72,7 +72,7 @@ const VerifyCertificate = () => {
                 <meta name="description" content="Wait a moment while we understand this certificate link" />
                 <meta property="og:title" content="Reading Certificate Link | Serch" />
                 <meta property="og:description" content="Wait a moment while we understand this certificate link" />
-                <meta property="og:image" content={ Assets.logo } />
+                <meta property="og:image" content={ LinkAssets.logo } />
             </Helmet>
             <Header />
             <div className="associate-account-setup-body">

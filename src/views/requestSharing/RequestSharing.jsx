@@ -18,7 +18,7 @@ const RequestSharing = () => {
                 <meta name="description" content="Learn more on requestSharing" />
                 <meta property="og:title" content="RequestSharing | Serch" />
                 <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ Assets.logo } />
+                <meta property="og:image" content={ LinkAssets.logo } />
             </Helmet>
             <Header />
             <div className="request-sharing-header">

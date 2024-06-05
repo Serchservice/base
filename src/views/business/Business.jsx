@@ -5,7 +5,6 @@ import './business.css'
 import Assets from '../../assets/Assets'
 import LinkAssets from '../../assets/LinkAssets'
 import { Icon } from '@iconify/react'
-import Plan from '../../components/plan/Plan'
 import Header from '../../components/header/Header'
 import DownloadBusinessApp from '../../components/app-download/DownloadBusinessApp'
 import CountriesInSerch from '../../components/countries-in-serch/CountriesInSerch'
@@ -39,7 +38,7 @@ const Business = () => {
                 <meta name="description" content="Understand how Serch Business works" />
                 <meta property="og:title" content="Serch Business | Serch" />
                 <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ Assets.logo } />
+                <meta property="og:image" content={ LinkAssets.logo } />
             </Helmet>
             <Header />
             <div className="business-header">

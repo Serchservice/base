@@ -2,14 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import './error.css'
-import Assets from '../../assets/Assets'
 import LinkAssets from '../../assets/LinkAssets'
 import FooterShort from '../../components/footer/FooterShort'
 import Header from '../../components/header/Header'
 import Links from '../../config/Links'
 import { Icon } from '@iconify/react'
 
-const Error = (props) => {
+const Error = () => {
     const links = [
         {
             "link": Links.home,
@@ -44,7 +43,7 @@ const Error = (props) => {
                 <meta name="description" content="Oops! Unknown page route" />
                 <meta property="og:title" content="404 Error | Serch" />
                 <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ Assets.logo } />
+                <meta property="og:image" content={ LinkAssets.logo } />
             </Helmet>
             <Header />
             <img alt="Error" src={ LinkAssets.error } className="error-image" />

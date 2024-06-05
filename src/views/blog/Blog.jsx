@@ -12,6 +12,7 @@ import Util from '../../config/Util';
 import "./blog.css";
 import BlogHeader from "./widgets/BlogHeader";
 import BlogItem from './widgets/BlogItem';
+import LinkAssets from "../../assets/LinkAssets";
 
 const Blog = () => {
     const { slug } = useParams()
@@ -37,7 +38,7 @@ const Blog = () => {
                     <meta name="description" content={`Loading our blog content for ${slug}`} />
                     <meta property="og:title" content="Serch BlogHouse - Blogs | Serch" />
                     <meta property="og:description" content={`Loading our blog content for ${slug}`} />
-                    <meta property="og:image" content={Assets.logo} />
+                    <meta property="og:image" content={ LinkAssets.logo } />
                 </Helmet>
                 <BlogHeader />
                 <div className="blog-content-container">
@@ -87,7 +88,7 @@ const Blog = () => {
                     <meta name="description" content={content.description} />
                     <meta property="og:title" content={`${content.title} - Serch Blogs | Serch`} />
                     <meta property="og:description" content={content.description} />
-                    <meta property="og:image" content={Assets.logo} />
+                    <meta property="og:image" content={ content.image } />
                 </Helmet>
                 <BlogHeader />
                 <div className="blog-content-container">

@@ -16,7 +16,7 @@ const Verification = () => {
                 <meta name="description" content="Understand how to get Serch verified" />
                 <meta property="og:title" content="Verification | Serch" />
                 <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ Assets.logo } />
+                <meta property="og:image" content={ LinkAssets.logo } />
             </Helmet>
             <Header />
             <div className="verification-header">

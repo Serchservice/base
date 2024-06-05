@@ -19,7 +19,7 @@ const Providing = () => {
                 <meta name="description" content="Start providing your skills as a Serch partner" />
                 <meta property="og:title" content="Providing | Serch" />
                 <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ Assets.logo } />
+                <meta property="og:image" content={ LinkAssets.logo } />
             </Helmet>
             <Header />
             <div className="providing-header">

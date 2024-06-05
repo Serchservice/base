@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useContentful } from 'react-contentful'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
-import Assets from '../../assets/Assets'
 import Footer from '../../components/footer/Footer'
 import Shimmer from '../../components/shimmer/Shimmer'
 import Links from '../../config/Links'
@@ -11,6 +10,7 @@ import './newsroom.css'
 import NewsHeader from './widgets/NewsHeader'
 import RecentNewsLink from './widgets/RecentNewsLink'
 import Util from '../../config/Util'
+import LinkAssets from '../../assets/LinkAssets'
 
 const Newsroom = () => {
     const [featuredList, setFeaturedList] = useState([]);
@@ -107,7 +107,7 @@ const Newsroom = () => {
                     <meta name="description" content="Read through Serchservice news and get latest updates on what's happening" />
                     <meta property="og:title" content="Newsroom | Serch" />
                     <meta property="og:description" content="Read through Serchservice news and get latest updates on what's happening" />
-                    <meta property="og:image" content={Assets.logo} />
+                    <meta property="og:image" content={ LinkAssets.logo } />
                 </Helmet>
                 <NewsHeader />
                 <div className="newsroom-content-description">
@@ -133,7 +133,7 @@ const Newsroom = () => {
                     <meta name="description" content="Read through Serchservice news and get latest updates on what's happening" />
                     <meta property="og:title" content="Newsroom | Serch" />
                     <meta property="og:description" content="Read through Serchservice news and get latest updates on what's happening" />
-                    <meta property="og:image" content={Assets.logo} />
+                    <meta property="og:image" content={ LinkAssets.logo } />
                 </Helmet>
                 <NewsHeader />
                 <div className="newsroom-content-description">

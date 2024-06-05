@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useContentful } from 'react-contentful';
 import { Helmet } from 'react-helmet';
-import Assets from '../../assets/Assets';
 import Footer from '../../components/footer/Footer';
 import Shimmer from '../../components/shimmer/Shimmer';
 import ItemGenerator from '../../config/ItemGenerator';
@@ -9,6 +8,7 @@ import NewsItem from './widgets/NewsItem';
 import './news.css';
 import NewsHeader from './widgets/NewsHeader';
 import Util from '../../config/Util';
+import LinkAssets from '../../assets/LinkAssets';
 
 const News = () => {
     const [news, setNews] = useState([]);
@@ -39,7 +39,7 @@ const News = () => {
                     <meta name="description" content="Read through Serchservice news and get latest updates on what's happening" />
                     <meta property="og:title" content="News | Serch" />
                     <meta property="og:description" content="Read through Serchservice news and get latest updates on what's happening" />
-                    <meta property="og:image" content={Assets.logo} />
+                    <meta property="og:image" content={ LinkAssets.logo } />
                 </Helmet>
                 <NewsHeader content='News' />
                 <div className="news-content-description">
@@ -62,7 +62,7 @@ const News = () => {
                     <meta name="description" content="Read through Serchservice news and get latest updates on what's happening" />
                     <meta property="og:title" content="News | Serch" />
                     <meta property="og:description" content="Read through Serchservice news and get latest updates on what's happening" />
-                    <meta property="og:image" content={Assets.logo} />
+                    <meta property="og:image" content={ LinkAssets.logo } />
                 </Helmet>
                 <NewsHeader content='News' />
                 <div className="news-content-description">

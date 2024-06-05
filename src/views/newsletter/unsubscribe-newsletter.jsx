@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react'
 import { Helmet } from 'react-helmet'
-import Assets from '../../assets/Assets'
 import Footer from '../../components/footer/Footer'
 import Header from '../../components/header/Header'
 import Loading from '../../components/loading/Loading'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import Links from '../../config/Links'
+import LinkAssets from '../../assets/LinkAssets'
 
 const UnsubscribeNewsletter = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -65,7 +65,7 @@ const UnsubscribeNewsletter = () => {
                 <meta name="description" content="Let's verify your payment" />
                 <meta property="og:title" content="Payment verification | Serch" />
                 <meta property="og:description" content="Let's verify your payment" />
-                <meta property="og:image" content={ Assets.logo } />
+                <meta property="og:image" content={ LinkAssets.logo } />
             </Helmet>
             <Header />
             <div className="associate-account-setup-body">

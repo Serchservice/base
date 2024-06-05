@@ -16,7 +16,7 @@ const Tip2Fix = () => {
                 <meta name="description" content="How to make use of Tip2Fix" />
                 <meta property="og:title" content="Tip2Fix | Serch" />
                 <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ Assets.logo } />
+                <meta property="og:image" content={ LinkAssets.logo } />
             </Helmet>
             <Header />
             <div className="tip2-fix-header">

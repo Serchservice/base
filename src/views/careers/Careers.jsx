@@ -5,7 +5,6 @@ import Header from '../../components/header/Header'
 import LinkAssets from '../../assets/LinkAssets'
 import Footer from '../../components/footer/Footer'
 import { Icon } from '@iconify/react'
-import Assets from '../../assets/Assets'
 import Links from '../../config/Links'
 import ItemGenerator from '../../config/ItemGenerator'
 
@@ -35,7 +34,7 @@ const Careers = () => {
                 <meta name="description" content="Our team is the power we work with" />
                 <meta property="og:title" content="Careers | Serch" />
                 <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ Assets.logo } />
+                <meta property="og:image" content={ LinkAssets.logo } />
             </Helmet>
             <Header />
             <div className="careers-about-us-header">

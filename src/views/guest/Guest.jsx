@@ -18,7 +18,7 @@ const Guest = () => {
                 <meta name="description" content="Requesting in Serch as a guest" />
                 <meta property="og:title" content="Guest | Serch" />
                 <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ Assets.logo } />
+                <meta property="og:image" content={ LinkAssets.logo } />
             </Helmet>
             <Header />
             <section className="guest-section">

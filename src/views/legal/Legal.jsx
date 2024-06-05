@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-import { Helmet } from "react-helmet";
-import "./legal.css";
-import Assets from "../../assets/Assets";
-import Footer from "../../components/footer/Footer";
-import LegalItem from "./LegalItem";
-import ItemGenerator from "../../config/ItemGenerator";
-import Shimmer from "../../components/shimmer/Shimmer";
-import Header from "../../components/header/Header";
 import { useContentful } from 'react-contentful';
+import { Helmet } from "react-helmet";
+import Footer from "../../components/footer/Footer";
+import Header from "../../components/header/Header";
+import Shimmer from "../../components/shimmer/Shimmer";
+import ItemGenerator from "../../config/ItemGenerator";
+import "./legal.css";
+import LegalItem from "./widgets/LegalItem";
+import LinkAssets from "../../assets/LinkAssets";
 
 const Legal = () => {
     const { data, error, fetched, loading } = useContentful({ contentType: 'legalDocumentGroup' });
@@ -76,7 +76,7 @@ const Legal = () => {
                     <meta name="description" content="Serch legal documents on different policies and guidelines" />
                     <meta property="og:title" content="Legal Hub | Serch" />
                     <meta property="og:description" content="Serch legal documents on different policies and guidelines" />
-                    <meta property="og:image" content={Assets.logo} />
+                    <meta property="og:image" content={ LinkAssets.logo } />
                 </Helmet>
                 <Header />
                 <div className="legal-container">
@@ -112,7 +112,7 @@ const Legal = () => {
                     <meta name="description" content="Serch legal documents on different policies and guidelines" />
                     <meta property="og:title" content="Legal Hub | Serch" />
                     <meta property="og:description" content="Serch legal documents on different policies and guidelines" />
-                    <meta property="og:image" content={Assets.logo} />
+                    <meta property="og:image" content={ LinkAssets.logo } />
                 </Helmet>
                 <Header />
                 <div className="legal-container">

@@ -12,6 +12,7 @@ import Util from '../../config/Util';
 import "./newsContent.css";
 import NewsHeader from "./widgets/NewsHeader";
 import NewsItem from './widgets/NewsItem';
+import LinkAssets from "../../assets/LinkAssets";
 
 const NewsContent = () => {
     const { slug } = useParams()
@@ -37,7 +38,7 @@ const NewsContent = () => {
                     <meta name="description" content={`Loading our news content for ${slug}`} />
                     <meta property="og:title" content="Serch Newsroom - News | Serch" />
                     <meta property="og:description" content={`Loading our news content for ${slug}`} />
-                    <meta property="og:image" content={Assets.logo} />
+                    <meta property="og:image" content={ LinkAssets.logo } />
                 </Helmet>
                 <NewsHeader />
                 <div className="news-content-container">
@@ -88,7 +89,7 @@ const NewsContent = () => {
                     <meta name="description" content={content.description} />
                     <meta property="og:title" content={`${content.title} - Serch News | Serch`} />
                     <meta property="og:description" content={content.description} />
-                    <meta property="og:image" content={Assets.logo} />
+                    <meta property="og:image" content={ content.image } />
                 </Helmet>
                 <NewsHeader />
                 <div className="news-content-container">

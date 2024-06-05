@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Helmet } from 'react-helmet'
-import CertificateProfileContent from './certificate-profile-content'
-import CertificateTestimonialContent from './certificate-testimonial-content'
+import CertificateProfileContent from './widgets/certificate-profile-content'
+import CertificateTestimonialContent from './widgets/certificate-testimonial-content'
 import './view-certificate.css'
 import Assets from '../../assets/Assets'
 import Footer from '../../components/footer/Footer'
@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import { wait } from '@testing-library/user-event/dist/utils'
 import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist/webpack';
 import Canvas from "canvas";
+import LinkAssets from '../../assets/LinkAssets'
 
 const ViewCertificate = () => {
     const { data } = useContext(DataContext)
@@ -97,7 +98,7 @@ const ViewCertificate = () => {
                 <meta name="description" content="Join the Serch platform as an associate provider and increase your earnings" />
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content="Join the Serch platform as an associate provider and increase your earnings" />
-                <meta property="og:image" content={Assets.logo} />
+                <meta property="og:image" content={ LinkAssets.logo } />
             </Helmet>
             <div className="view-certificate-header">
                 <div className="view-certificate-container1">

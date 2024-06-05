@@ -6,7 +6,6 @@ import CountriesInSerch from '../../components/countries-in-serch/CountriesInSer
 import Footer from '../../components/footer/Footer'
 import LinkAssets from '../../assets/LinkAssets'
 import { Icon } from '@iconify/react'
-import Assets from '../../assets/Assets'
 
 const Reserve = () => {
     return (
@@ -16,7 +15,7 @@ const Reserve = () => {
                 <meta name="description" content="Learn about service scheduling" />
                 <meta property="og:title" content="Reserve | Serch" />
                 <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ Assets.logo } />
+                <meta property="og:image" content={ LinkAssets.logo } />
             </Helmet>
             <Header />
             <div className="reserve-header">

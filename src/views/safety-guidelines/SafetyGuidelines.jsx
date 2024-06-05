@@ -17,7 +17,7 @@ const SafetyGuidelines = (props) => {
                 <meta name="description" content="Learn how to be safe when using the Serch platform" />
                 <meta property="og:title" content="Safety Guidelines | Serch" />
                 <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ Assets.logo } />
+                <meta property="og:image" content={ LinkAssets.logo } />
             </Helmet>
             <Header />
             <div className="safety-guidelines-heading">
