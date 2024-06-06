@@ -61,15 +61,23 @@ const Leadership = () => {
                     position: team.fields.position,
                     link: team.fields.link,
                     shortName: team.fields.short_name,
+                    order: team.fields.order
                 })));
             } else if (group === "Board") {
                 acc.boards.push(...teams.map((team) => ({
                     name: team.fields.name,
                     position: team.fields.board,
+                    order: team.fields.order
                 })));
             }
             return acc;
         }, { executives: [], boards: [] });
+
+        // Sort the executives by the order property
+        teams.executives.sort((a, b) => a.order - b.order);
+
+        // Sort the boards by the order property
+        teams.boards.sort((a, b) => a.order - b.order);
         return (
             <div className="leadership-container">
                 <Helmet>
