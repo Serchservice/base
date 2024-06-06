@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import { useContentful } from 'react-contentful';
 import { Helmet } from "react-helmet";
 import Footer from "../../components/footer/Footer";
@@ -16,7 +15,7 @@ const Legal = () => {
     const [filteredLegals, setFilteredLegals] = useState([]);
 
     useEffect(() => {
-        if (data) {
+        if (data && data["items"].length > 0) {
             const legals = data["items"].map((item) => ({
                 group: item.fields.group,
                 legals: item.fields.legals.map((legal) => ({
@@ -68,7 +67,7 @@ const Legal = () => {
     };
 
 
-    if (loading || !fetched || error || !data) {
+    if (loading || !fetched || error || !data || data["items"].length === 0) {
         return (
             <div className="about-container">
                 <Helmet>
