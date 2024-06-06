@@ -7,11 +7,4 @@ const Axios = axios.create({
     },
 });
 
-const ContentfulAxios = axios.create({
-    baseURL: process.env.REACT_APP_CONTENTFUL_BASE_URL,
-    headers: {
-        'Content-Type': 'application/json',
-    },
-});
-
-export { ContentfulAxios, Axios, axios as default };
+export { Axios, axios as default };
