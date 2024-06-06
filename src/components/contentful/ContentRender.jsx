@@ -17,6 +17,15 @@ const ContentRender = ({ content }) => {
                 // If not an image, return null to handle other embedded entry types or render them differently
                 return null;
             },
+            [BLOCKS.UL_LIST]: (_node, children) => {
+                return <ul style={{ paddingLeft: '20px' }}>{children}</ul>;
+            },
+            [BLOCKS.OL_LIST]: (_node, children) => {
+                return <ol style={{ paddingLeft: '20px' }}>{children}</ol>;
+            },
+            [BLOCKS.LIST_ITEM]: (_node, children) => {
+                return <li>{children}</li>;
+            },
             // Add other renderNode handlers if necessary
         },
     };
