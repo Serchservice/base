@@ -70,7 +70,7 @@ const LegalDocument = () => {
                 <Footer />
             </div>
         );
-    } else if(!data) {
+    } else if(!data || data["items"].length == 0) {
         redirect(Links.error)
     } else {
         return (
