@@ -11,7 +11,7 @@ import LinkAssets from '../../assets/LinkAssets'
 const Leadership = () => {
     const { data, error, fetched, loading } = useContentful({ contentType: 'teamGroup' });
 
-    if (loading || !fetched || error || !data) {
+    if (loading || !fetched || error || !data || data["items"].length === 0) {
         return (
             <div className="leadership-container">
                 <Helmet>

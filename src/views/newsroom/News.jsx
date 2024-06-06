@@ -15,7 +15,7 @@ const News = () => {
     const { data, error, fetched, loading } = useContentful({ contentType: 'serchNews' });
 
     useEffect(() => {
-        if (data) {
+        if (data && data["items"].length > 0) {
             const news = data["items"].map((item) => ({
                 categories: item.fields.categories,
                 date: item.fields.date,
@@ -31,7 +31,7 @@ const News = () => {
         }
     }, [data])
 
-    if (loading || !fetched || error || !data) {
+    if (loading || !fetched || error || !data || data["items"].length === 0) {
         return (
             <div className="news-container">
                 <Helmet>
