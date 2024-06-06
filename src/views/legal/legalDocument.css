@@ -18,7 +18,7 @@
     padding-bottom: 24px;
     background-color: #050404;
     position: sticky;
-    z-index: 1000;
+    z-index: 90;
     top: 0;
 }
 
