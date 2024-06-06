@@ -151,7 +151,7 @@
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    text-align: justify;
+    text-align: start;
 }
 
 .blog-content p {
