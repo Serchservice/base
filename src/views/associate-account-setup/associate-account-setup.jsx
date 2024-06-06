@@ -72,7 +72,7 @@ const AssociateAccountSetup = () => {
                 })
                 .then((response) => {
                     setIsLoading(false)
-                    if(response.data["code"] === 200) {
+                    if(response.data["code"] === 200 || response.data["code"] === 201) {
                         setEmailAddress("")
                         SweetAlert(response.data["message"], "success")
                         redirect(Links.home)
