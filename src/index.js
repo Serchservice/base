@@ -85,7 +85,7 @@ const App = () => {
                             <Route element={ <Reserve /> } path={ Links.schedule } />
                             <Route element={ <SafetyGuidelines /> } path={ Links.safety } />
                             <Route element={ <SupportHub /> } path={ Links.support } />
-                            {/* <Route element={ <Tip2Fix /> } path={ Links.tip2fix } /> */}
+                            <Route element={ <Tip2Fix /> } path={ Links.tip2fix } />
                             <Route element={ <Verification /> } path={ Links.verification } />
 
                             /// Routes with dynamic content
