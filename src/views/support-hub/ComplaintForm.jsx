@@ -13,8 +13,10 @@ const ComplaintForm = () => {
 
     async function complain(event) {
         event.preventDefault()
-        if(comment === "") {
-            SweetAlert("State your complaint")
+        if(isLoading) {
+            return
+        } else if(comment === "") {
+            SweetAlert("State your complaint", 'info')
         } else {
             setIsLoading(true)
             await Axios.post("/company/complaint/complain", {
