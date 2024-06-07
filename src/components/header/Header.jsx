@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './header.css'
 import Assets from '../../assets/Assets'
 import { Link } from 'react-router-dom'
@@ -43,6 +43,19 @@ const Header = () => {
     const toggleMobileMenu = () => {
         setOpen(!open)
     }
+
+    useEffect(() => {
+        if (open) {
+            document.body.classList.add('overflow-hidden');
+        } else {
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        // Cleanup function to remove the class when the component is unmounted
+        return () => {
+            document.body.classList.remove('overflow-hidden');
+        };
+    }, [open]);
 
     return (
         <div className={"navbar-interactive-container"}>

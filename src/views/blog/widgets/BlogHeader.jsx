@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Assets from "../../../assets/Assets";
 import Links from "../../../config/Links";
@@ -9,6 +9,19 @@ const BlogHeader = ({content = 'BlogHouse'}) => {
     const toggleMobileMenu = () => {
         setOpen(!open)
     }
+
+    useEffect(() => {
+        if (open) {
+            document.body.classList.add('overflow-hidden');
+        } else {
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        // Cleanup function to remove the class when the component is unmounted
+        return () => {
+            document.body.classList.remove('overflow-hidden');
+        };
+    }, [open]);
 
     const links = [
         {
