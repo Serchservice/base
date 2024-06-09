@@ -1,6 +1,7 @@
 import platform from 'platform';
 import axios from 'axios';
 import detect from 'detect.js';
+import Keys from './Keys';
 
 const DeviceInfo = async () => {
     // Get platform information
@@ -8,7 +9,7 @@ const DeviceInfo = async () => {
     const detectInfo = detect.parse(navigator.userAgent);
 
     // Get IP address using an external service
-    const ipResponse = await axios.get('https://api.ipify.org?format=json');
+    const ipResponse = await axios.get(Keys.ipUrl);
     const ipAddress = ipResponse.data.ip;
 
     const deviceDetails = {
