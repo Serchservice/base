@@ -31,6 +31,46 @@ const News = () => {
         }
     }, [data])
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const [currentItems, setCurrentItems] = useState([]);
+    const itemsPerPage = 5;
+
+    useEffect(() => {
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const newCurrentItems = news.slice(startIndex, startIndex + itemsPerPage);
+        setCurrentItems(newCurrentItems);
+    }, [news, currentPage]);
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
+    const totalPages = Math.ceil(news.length / itemsPerPage);
+
+    const renderPagination = () => {
+        const pages = [];
+        for (let i = 1; i <= totalPages; i++) {
+            pages.push(
+                <button
+                    key={i}
+                    onClick={() => handlePageChange(i)}
+                    className={`pagination-button ${i === currentPage ? 'active' : ''}`}
+                    style={{
+                        backgroundColor: i === currentPage ? "#050404" : 'transparent',
+                        color: i === currentPage ? "#ffffff" :" #050404",
+                        border: `1px solid #050404`,
+                        margin: '0 5px',
+                        padding: '5px 10px',
+                        cursor: 'pointer'
+                    }}
+                >
+                    {i}
+                </button>
+            );
+        }
+        return pages;
+    };
+
     if (loading || !fetched || error || !data || data["items"].length === 0) {
         return (
             <div className="news-container">
@@ -69,8 +109,8 @@ const News = () => {
                     <h1 className="news-text08">The Press</h1>
                     <span className="news-text09">Read all about what the press says about Serch</span>
                 </div>
-                <div className='news-list-container'>{
-                    news.map((newsContent, key) => (
+                <div className='news-list-container'>
+                    {currentItems.map((newsContent, key) => (
                         <NewsItem
                             key={key}
                             image={newsContent.image}
@@ -81,8 +121,9 @@ const News = () => {
                             header={newsContent.title}
                             date={Util.formatDate(newsContent.date)}
                         />
-                    ))
-                }</div>
+                    ))}
+                    {totalPages > 1 && (<div className="pagination"> { renderPagination() } </div>)}
+                </div>
                 <Footer />
             </div>
         )
