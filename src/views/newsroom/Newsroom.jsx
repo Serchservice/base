@@ -37,7 +37,7 @@ const Newsroom = () => {
             // Sort the items by date in descending order
             const sorted = news.sort((a, b) => new Date(b.date) - new Date(a.date));
             // Get the top 5 most recent items (or fewer if the list has less than 5 items)
-            const recents = sorted.slice(0, 5);
+            const recents = sorted.slice(0, 10);
             setRecents(recents);
             setFeaturedList(sorted.filter((item) => item.isFeatured));
         }
@@ -55,7 +55,7 @@ const Newsroom = () => {
     };
 
     useEffect(() => {
-        if(featuredList.length > 1) {
+        if (featuredList.length > 1) {
             if (isPlaying) {
                 startSlideShow();
             }
@@ -99,6 +99,46 @@ const Newsroom = () => {
         resetInterval(); // Reset the interval when previous is clicked
     };
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const [currentItems, setCurrentItems] = useState([]);
+    const itemsPerPage = 5;
+
+    useEffect(() => {
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const newCurrentItems = recents.slice(startIndex, startIndex + itemsPerPage);
+        setCurrentItems(newCurrentItems);
+    }, [recents, currentPage]);
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
+    const totalPages = Math.ceil(recents.length / itemsPerPage);
+
+    const renderPagination = () => {
+        const pages = [];
+        for (let i = 1; i <= totalPages; i++) {
+            pages.push(
+                <button
+                    key={i}
+                    onClick={() => handlePageChange(i)}
+                    className={`pagination-button ${i === currentPage ? 'active' : ''}`}
+                    style={{
+                        backgroundColor: i === currentPage ? "#050404" : 'transparent',
+                        color: i === currentPage ? "#ffffff" : " #050404",
+                        border: `1px solid #050404`,
+                        margin: '0 5px',
+                        padding: '5px 10px',
+                        cursor: 'pointer'
+                    }}
+                >
+                    {i}
+                </button>
+            );
+        }
+        return pages;
+    };
+
     if (loading || !fetched || error || !data || data["items"].length === 0) {
         return (
             <div className="newsroom-container">
@@ -107,7 +147,7 @@ const Newsroom = () => {
                     <meta name="description" content="Read through Serchservice news and get latest updates on what's happening" />
                     <meta property="og:title" content="Newsroom | Serch" />
                     <meta property="og:description" content="Read through Serchservice news and get latest updates on what's happening" />
-                    <meta property="og:image" content={ LinkAssets.logo } />
+                    <meta property="og:image" content={LinkAssets.logo} />
                 </Helmet>
                 <NewsHeader />
                 <div className="newsroom-content-description">
@@ -133,7 +173,7 @@ const Newsroom = () => {
                     <meta name="description" content="Read through Serchservice news and get latest updates on what's happening" />
                     <meta property="og:title" content="Newsroom | Serch" />
                     <meta property="og:description" content="Read through Serchservice news and get latest updates on what's happening" />
-                    <meta property="og:image" content={ LinkAssets.logo } />
+                    <meta property="og:image" content={LinkAssets.logo} />
                 </Helmet>
                 <NewsHeader />
                 <div className="newsroom-content-description">
@@ -144,11 +184,11 @@ const Newsroom = () => {
                     featuredList.length > 0 && (
                         <div className="newsroom-featured-display">
                             <Link className={`newsroom-featured ${slideDirection === 'right' ? 'slide-enter-right' : 'slide-enter-left'}`} to={`${Links.newsroom}/news/${featuredList[currentSlide].slug}`} key={slideKey}>
-                                <img src={ featuredList[currentSlide].image } alt={ featuredList[currentSlide].imageAlt } loading="lazy" className="newsroom-image" />
+                                <img src={featuredList[currentSlide].image} alt={featuredList[currentSlide].imageAlt} loading="lazy" className="newsroom-image" />
                                 <div className="newsroom-container1">
                                     <span className="newsroom-date">{Util.formatDate(featuredList[currentSlide].date)}</span>
-                                    <span className="newsroom-header">{ featuredList[currentSlide].title }</span>
-                                    <span className="newsroom-summary">{ featuredList[currentSlide].description }</span>
+                                    <span className="newsroom-header">{featuredList[currentSlide].title}</span>
+                                    <span className="newsroom-summary">{featuredList[currentSlide].description}</span>
                                     <svg viewBox="0 0 1024 1024" className="newsroom-icon10">
                                         <path d="M512 170l342 342-342 342-60-60 238-240h-520v-84h520l-238-240z"></path>
                                     </svg>
@@ -157,14 +197,14 @@ const Newsroom = () => {
                             {
                                 featuredList.length > 1 && (
                                     <div className="newsroom-controls">
-                                        <Icon icon="mdi:skip-previous" className="newsroom-control" onClick={handlePrev}/>
+                                        <Icon icon="mdi:skip-previous" className="newsroom-control" onClick={handlePrev} />
                                         {
                                             isPlaying
-                                                ? <Icon icon="mdi:pause" className="newsroom-control" onClick={handlePlayPause}/>
-                                                : <Icon icon="mdi:play" className="newsroom-control" onClick={handlePlayPause}/>
+                                                ? <Icon icon="mdi:pause" className="newsroom-control" onClick={handlePlayPause} />
+                                                : <Icon icon="mdi:play" className="newsroom-control" onClick={handlePlayPause} />
                                         }
-                                        <Icon icon="mdi:stop" className="newsroom-control" onClick={handleStop}/>
-                                        <Icon icon="mdi:skip-next" className="newsroom-control" onClick={handleNext}/>
+                                        <Icon icon="mdi:stop" className="newsroom-control" onClick={handleStop} />
+                                        <Icon icon="mdi:skip-next" className="newsroom-control" onClick={handleNext} />
                                     </div>
                                 )
                             }
@@ -174,17 +214,16 @@ const Newsroom = () => {
                 <div className="newsroom-recent">
                     <span className="newsroom-recent-text">Recent</span>
                     <div className="newsroom-recent-news">
-                        {
-                            recents.map((recent, key) => (
-                                <RecentNewsLink
-                                    key={key}
-                                    header={recent.title}
-                                    date={Util.formatDate(recent.date)}
-                                    slug={recent.slug}
-                                />
-                            ))
-                        }
-                        <Link to={ Links.news } className="newsroom-see-all">See all</Link>
+                        {currentItems.map((recent, key) => (
+                            <RecentNewsLink
+                                key={key}
+                                header={recent.title}
+                                date={Util.formatDate(recent.date)}
+                                slug={recent.slug}
+                            />
+                        ))}
+                        {totalPages > 1 && (<div className="pagination"> {renderPagination()} </div>)}
+                        <Link to={Links.news} className="newsroom-see-all">See all</Link>
                     </div>
                 </div>
                 <Footer />

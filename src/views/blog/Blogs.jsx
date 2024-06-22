@@ -30,6 +30,46 @@ const Blogs = () => {
         }
     }, [data])
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const [currentItems, setCurrentItems] = useState([]);
+    const itemsPerPage = 10;
+
+    useEffect(() => {
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const newCurrentItems = blogs.slice(startIndex, startIndex + itemsPerPage);
+        setCurrentItems(newCurrentItems);
+    }, [blogs, currentPage]);
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
+    const totalPages = Math.ceil(blogs.length / itemsPerPage);
+
+    const renderPagination = () => {
+        const pages = [];
+        for (let i = 1; i <= totalPages; i++) {
+            pages.push(
+                <button
+                    key={i}
+                    onClick={() => handlePageChange(i)}
+                    className={`pagination-button ${i === currentPage ? 'active' : ''}`}
+                    style={{
+                        backgroundColor: i === currentPage ? "#050404" : 'transparent',
+                        color: i === currentPage ? "#ffffff" :" #050404",
+                        border: `1px solid #050404`,
+                        margin: '0 5px',
+                        padding: '5px 10px',
+                        cursor: 'pointer'
+                    }}
+                >
+                    {i}
+                </button>
+            );
+        }
+        return pages;
+    };
+
     if (loading || !fetched || error || !data || data["items"].length === 0) {
         return (
             <div className="blogs-container">
@@ -68,8 +108,8 @@ const Blogs = () => {
                     <h1 className="blogs-text08">Our Blogs</h1>
                     <span className="blogs-text09">Gain more insight on Serch through our knowledge library</span>
                 </div>
-                <div className='blogs-list-container'>{
-                    blogs.map((blog, key) => (
+                <div className='blogs-list-container'>
+                    {currentItems.map((blog, key) => (
                         <BlogItem
                             key={key}
                             image={blog.image}
@@ -79,8 +119,9 @@ const Blogs = () => {
                             header={blog.title}
                             date={Util.formatDate(blog.date)}
                         />
-                    ))
-                }</div>
+                    ))}
+                    {totalPages > 1 && (<div className="pagination"> { renderPagination() } </div>)}
+                </div>
                 <Footer />
             </div>
         )

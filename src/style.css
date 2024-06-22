@@ -327,6 +327,36 @@
     text-decoration: none;
 }
 
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-self: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.pagination-button {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    color: #333;
+    cursor: pointer;
+    margin: 0 5px;
+    padding: 5px 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination-button.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.pagination-button:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
 @media(max-width: 991px) {
     .hoverButton {
         flex: 1;
