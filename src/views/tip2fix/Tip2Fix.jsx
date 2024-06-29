@@ -1,23 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 import './tip2fix.css'
 import Assets from '../../assets/Assets'
 import LinkAssets from '../../assets/LinkAssets'
 import Footer from '../../components/footer/Footer'
 import Header from '../../components/header/Header'
 import Links from '../../config/Links'
+import Title from '../../config/Title'
 
 const Tip2Fix = () => {
     return (
         <div className="tip2-fix-container">
-            <Helmet>
-                <title>Tip2Fix | Serch</title>
-                <meta name="description" content="How to make use of Tip2Fix" />
-                <meta property="og:title" content="Tip2Fix | Serch" />
-                <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ LinkAssets.logo } />
-            </Helmet>
+            <Title title="Tip2Fix" description='How to maximize the power of Tip2Fix' />
             <Header />
             <div className="tip2-fix-header">
                 <div className="tip2-fix-container01">

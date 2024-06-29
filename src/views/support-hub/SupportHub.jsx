@@ -1,10 +1,9 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
 import './support-hub.css'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 import ComplaintForm from './ComplaintForm'
-import LinkAssets from '../../assets/LinkAssets'
+import Title from '../../config/Title'
 
 const SupportHub = () => {
     const supports = [
@@ -53,13 +52,7 @@ const SupportHub = () => {
 
     return (
         <div className="support-hub-container">
-            <Helmet>
-                <title>Support Hub | Serch</title>
-                <meta name="description" content="Details about our company" />
-                <meta property="og:title" content="Support Hub | Serch" />
-                <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ LinkAssets.logo } />
-            </Helmet>
+            <Title title="Support Hub" description='Get the help and support you need' />
             <Header />
             <div className="support-hub-heading">
                 <h1 className="support-hub-heading-title">

@@ -1,23 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 import './verification.css'
 import Header from '../../components/header/Header'
 import Assets from '../../assets/Assets'
 import LinkAssets from '../../assets/LinkAssets'
 import Footer from '../../components/footer/Footer'
 import Links from '../../config/Links'
+import Title from '../../config/Title'
 
 const Verification = () => {
     return (
         <div className="verification-container">
-            <Helmet>
-                <title>Verification | Serch</title>
-                <meta name="description" content="Understand how to get Serch verified" />
-                <meta property="og:title" content="Verification | Serch" />
-                <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ LinkAssets.logo } />
-            </Helmet>
+            <Title title="Verification" description='Find out how Serch verifies service providers and businesses' />
             <Header />
             <div className="verification-header">
                 <div className="verification-container01">

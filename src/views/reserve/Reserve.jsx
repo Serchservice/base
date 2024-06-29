@@ -1,22 +1,16 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
 import './reserve.css'
 import Header from '../../components/header/Header'
 import CountriesInSerch from '../../components/countries-in-serch/CountriesInSerch'
 import Footer from '../../components/footer/Footer'
 import LinkAssets from '../../assets/LinkAssets'
 import { Icon } from '@iconify/react'
+import Title from '../../config/Title'
 
 const Reserve = () => {
     return (
         <div className="reserve-container">
-            <Helmet>
-                <title>Reserve | Serch</title>
-                <meta name="description" content="Learn about service scheduling" />
-                <meta property="og:title" content="Reserve | Serch" />
-                <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ LinkAssets.logo } />
-            </Helmet>
+            <Title title="Reserve" description='Learn about service scheduling with Serch' />
             <Header />
             <div className="reserve-header">
                 <div className="reserve-container01">

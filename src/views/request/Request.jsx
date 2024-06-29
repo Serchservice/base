@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 import './request.css'
 import Header from '../../components/header/Header'
 import CountriesInSerch from '../../components/countries-in-serch/CountriesInSerch'
@@ -10,6 +9,7 @@ import LinkAssets from '../../assets/LinkAssets'
 import Assets from '../../assets/Assets'
 import { Icon } from '@iconify/react'
 import Links from '../../config/Links'
+import Title from '../../config/Title'
 
 const Request = () => {
     const categories = [
@@ -29,13 +29,7 @@ const Request = () => {
 
     return (
         <div className="request-container">
-            <Helmet>
-                <title>Request | Serch</title>
-                <meta name="description" content="Start requesting the services you prefer" />
-                <meta property="og:title" content="Request | Serch" />
-                <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ LinkAssets.logo } />
-            </Helmet>
+            <Title title="Request" description='Start requesting the services you prefer' />
             <Header />
             <section className="request-section">
                 <main className="request-main">

@@ -1,7 +1,6 @@
 import { Icon } from '@iconify/react/dist/iconify.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { useContentful } from 'react-contentful'
-import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 import Footer from '../../components/footer/Footer'
 import Shimmer from '../../components/shimmer/Shimmer'
@@ -10,7 +9,7 @@ import './newsroom.css'
 import NewsHeader from './widgets/NewsHeader'
 import RecentNewsLink from './widgets/RecentNewsLink'
 import Util from '../../config/Util'
-import LinkAssets from '../../assets/LinkAssets'
+import Title from '../../config/Title'
 
 const Newsroom = () => {
     const [featuredList, setFeaturedList] = useState([]);
@@ -142,13 +141,7 @@ const Newsroom = () => {
     if (loading || !fetched || error || !data || data["items"].length === 0) {
         return (
             <div className="newsroom-container">
-                <Helmet>
-                    <title>Newsroom | Serch</title>
-                    <meta name="description" content="Read through Serchservice news and get latest updates on what's happening" />
-                    <meta property="og:title" content="Newsroom | Serch" />
-                    <meta property="og:description" content="Read through Serchservice news and get latest updates on what's happening" />
-                    <meta property="og:image" content={LinkAssets.logo} />
-                </Helmet>
+                <Title title="Newsroom" description="Get latest updates on what's happening" />
                 <NewsHeader />
                 <div className="newsroom-content-description">
                     <h1 className="newsroom-text08">Serch global news</h1>
@@ -168,13 +161,7 @@ const Newsroom = () => {
     } else {
         return (
             <div className="newsroom-container">
-                <Helmet>
-                    <title>Newsroom | Serch</title>
-                    <meta name="description" content="Read through Serchservice news and get latest updates on what's happening" />
-                    <meta property="og:title" content="Newsroom | Serch" />
-                    <meta property="og:description" content="Read through Serchservice news and get latest updates on what's happening" />
-                    <meta property="og:image" content={LinkAssets.logo} />
-                </Helmet>
+                <Title title="Newsroom" description="Get latest updates on what's happening" />
                 <NewsHeader />
                 <div className="newsroom-content-description">
                     <h1 className="newsroom-text08">Serch global news</h1>

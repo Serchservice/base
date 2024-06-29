@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 import './provide.css'
 import Assets from '../../assets/Assets'
 import Header from '../../components/header/Header'
@@ -11,6 +10,7 @@ import Plan from '../../components/plan/Plan'
 import { Icon } from '@iconify/react'
 import LinkAssets from '../../assets/LinkAssets'
 import Links from '../../config/Links'
+import Title from '../../config/Title'
 
 const Provide = () => {
     const [ plans, setPlans ] = useState([
@@ -34,13 +34,7 @@ const Provide = () => {
 
     return (
         <div className="provide-container">
-            <Helmet>
-                <title>Provide | Serch</title>
-                <meta name="description" content="Learn what it takes to become our partner" />
-                <meta property="og:title" content="Provide | Serch" />
-                <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ LinkAssets.logo } />
-            </Helmet>
+            <Title title="Provide" description='Learn what it takes to become a Serch Partner' />
             <Header />
             <div className="provide-header">
                 <div className="provide-container01">

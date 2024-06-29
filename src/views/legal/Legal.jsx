@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useContentful } from 'react-contentful';
-import { Helmet } from "react-helmet";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import Shimmer from "../../components/shimmer/Shimmer";
 import ItemGenerator from "../../config/ItemGenerator";
 import "./legal.css";
 import LegalItem from "./widgets/LegalItem";
-import LinkAssets from "../../assets/LinkAssets";
+import Title from "../../config/Title";
 
 const Legal = () => {
     const { data, error, fetched, loading } = useContentful({ contentType: 'legalDocumentGroup' });
@@ -70,13 +69,7 @@ const Legal = () => {
     if (loading || !fetched || error || !data || data["items"].length === 0) {
         return (
             <div className="about-container">
-                <Helmet>
-                    <title>Legal Hub | Serch</title>
-                    <meta name="description" content="Serch legal documents on different policies and guidelines" />
-                    <meta property="og:title" content="Legal Hub | Serch" />
-                    <meta property="og:description" content="Serch legal documents on different policies and guidelines" />
-                    <meta property="og:image" content={ LinkAssets.logo } />
-                </Helmet>
+                <Title title="Legal Hub" description='Serch policies and guiding rules' />
                 <Header />
                 <div className="legal-container">
                     <div className="legal-header">
@@ -106,13 +99,7 @@ const Legal = () => {
     } else {
         return (
             <div className="about-container">
-                <Helmet>
-                    <title>Legal Hub | Serch</title>
-                    <meta name="description" content="Serch legal documents on different policies and guidelines" />
-                    <meta property="og:title" content="Legal Hub | Serch" />
-                    <meta property="og:description" content="Serch legal documents on different policies and guidelines" />
-                    <meta property="og:image" content={ LinkAssets.logo } />
-                </Helmet>
+                <Title title="Legal Hub" description='Serch policies and guiding rules' />
                 <Header />
                 <div className="legal-container">
                     <div className="legal-header">

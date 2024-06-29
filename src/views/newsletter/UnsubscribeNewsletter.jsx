@@ -1,21 +1,14 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
-import { Helmet } from 'react-helmet'
-import { Axios } from '../../api/Axios'
-import DataContext from '../../api/DataProvider'
+import React, { useRef, useState } from 'react'
 import Footer from '../../components/footer/Footer'
 import Header from '../../components/header/Header'
 import Loading from '../../components/loading/Loading'
-import Links from '../../config/Links'
-import SweetAlert from '../../config/SweetAlert'
-import '../associate-account-setup/associate-account-setup.css'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { wait } from '@testing-library/user-event/dist/utils'
-import LinkAssets from '../../assets/LinkAssets'
+import Links from '../../config/Links'
+import Title from '../../config/Title'
 
-const VerifyCertificate = () => {
+const UnsubscribeNewsletter = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [isVerified, setIsVerified] = useState(false);
-    const {setData} = useContext(DataContext)
     const [ searchParams ] = useSearchParams()
     const isMounted = useRef(false);
     const navigate = useNavigate()
@@ -25,10 +18,10 @@ const VerifyCertificate = () => {
     }, [])
 
     const loadPage = () => {
-        var token = searchParams.get("verify");
+        var token = searchParams.get("emailAddress");
         if(!isMounted.current) {
             if(token != null) {
-                verifyCertificate(token)
+                unsubscribe(token)
             } else {
                 redirect(Links.error)
             }
@@ -41,16 +34,15 @@ const VerifyCertificate = () => {
         navigate(route)
     }
 
-    async function verifyCertificate(token) {
+    async function unsubscribe(token) {
         setIsLoading(true)
-        await Axios.get(`/certificate/verify?token=${token}`)
+        await Axios.get(`/company/newsletter/unsubscribe?email_address=${token}`)
         .then((response) => {
             setIsLoading(false)
             if(response.data["code"] === 200) {
                 SweetAlert(response.data["message"], "success")
                 setIsVerified(true)
-                setData(response.data["data"])
-                redirect(Links.viewCertificate)
+                redirect(Links.home)
             } else {
                 setIsVerified(false)
                 SweetAlert(response.data["message"], "error")
@@ -67,21 +59,15 @@ const VerifyCertificate = () => {
 
     return (
         <div className="about-us-container">
-            <Helmet>
-                <title>Reading Certificate Link | Serch</title>
-                <meta name="description" content="Wait a moment while we understand this certificate link" />
-                <meta property="og:title" content="Reading Certificate Link | Serch" />
-                <meta property="og:description" content="Wait a moment while we understand this certificate link" />
-                <meta property="og:image" content={ LinkAssets.logo } />
-            </Helmet>
+            <Title title="Unsubscribe newsletter" description='Sorry to see you go!' />
             <Header />
             <div className="associate-account-setup-body">
                 <Loading
                     isLoading={isLoading}
                     isVerified={isVerified}
-                    loading='Verifying link...'
-                    verified='Link verified'
-                    unverified='Error while verifying link'
+                    loading='Unsubscribing...'
+                    verified='Unsubscribed'
+                    unverified="Couldn't finish request"
                 />
             </div>
             <Footer />
@@ -89,4 +75,4 @@ const VerifyCertificate = () => {
     )
 }
 
-export default VerifyCertificate
+export default UnsubscribeNewsletter

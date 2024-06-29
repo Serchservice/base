@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 import './error.css'
 import LinkAssets from '../../assets/LinkAssets'
 import FooterShort from '../../components/footer/FooterShort'
 import Header from '../../components/header/Header'
 import Links from '../../config/Links'
 import { Icon } from '@iconify/react'
+import Title from '../../config/Title'
 
 const Error = () => {
     const links = [
@@ -38,13 +38,7 @@ const Error = () => {
 
     return (
         <div className="error-container">
-            <Helmet>
-                <title>404 Error | Serch</title>
-                <meta name="description" content="Oops! Unknown page route" />
-                <meta property="og:title" content="404 Error | Serch" />
-                <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ LinkAssets.logo } />
-            </Helmet>
+            <Title title="Page not found" description='Oops! 404 error occurred' />
             <Header />
             <img alt="Error" src={ LinkAssets.error } className="error-image" />
             <div className="error-body">

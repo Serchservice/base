@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Helmet } from 'react-helmet'
 import './careers.css'
 import Header from '../../components/header/Header'
 import LinkAssets from '../../assets/LinkAssets'
@@ -7,6 +6,7 @@ import Footer from '../../components/footer/Footer'
 import { Icon } from '@iconify/react'
 import Links from '../../config/Links'
 import ItemGenerator from '../../config/ItemGenerator'
+import Title from '../../config/Title'
 
 const Careers = () => {
     const [ active, setActive ] = useState(0)
@@ -29,13 +29,7 @@ const Careers = () => {
 
     return (
         <div className="careers-container">
-            <Helmet>
-                <title>Careers | Serch</title>
-                <meta name="description" content="Our team is the power we work with" />
-                <meta property="og:title" content="Careers | Serch" />
-                <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ LinkAssets.logo } />
-            </Helmet>
+            <Title title="Careers" description='The power house behind what we do' />
             <Header />
             <div className="careers-about-us-header">
                 <h1 className="careers-text">

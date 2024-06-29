@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 import './about-us.css'
 import LinkAssets from '../../assets/LinkAssets'
 import Assets from '../../assets/Assets'
@@ -8,18 +7,12 @@ import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 import { Icon } from '@iconify/react'
 import Links from '../../config/Links'
+import Title from '../../config/Title'
 
 const AboutUs = () => {
     return (
         <div className="about-us-container">
-            <Helmet>
-                <title>About Us | Serch</title>
-                <meta name="description" content="Learn about Serch, our team and what inspires us to do what we love" />
-                <meta property="og:title" content="About Us | Serch" />
-                <meta property="og:description" content="Learn about Serch, our team and what inspires us to do what we love" />
-                <meta property="og:image" content={ LinkAssets.logo } />
-                <meta property="og:site_name" content="www.serchservice.com" />
-            </Helmet>
+            <Title description='Learn about Serch, our team and what inspires us to do what we love' title='About Us' />
             <Header />
             <div className="about-us-about-us-header">
                 <h1 className="about-us-text">About Us</h1>

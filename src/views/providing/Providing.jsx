@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 import './providing.css'
 import Header from '../../components/header/Header'
 import CountriesInSerch from '../../components/countries-in-serch/CountriesInSerch'
@@ -10,17 +9,12 @@ import { Icon } from '@iconify/react'
 import LinkAssets from '../../assets/LinkAssets'
 import Assets from '../../assets/Assets'
 import Links from '../../config/Links'
+import Title from '../../config/Title'
 
 const Providing = () => {
     return (
         <div className="providing-container">
-            <Helmet>
-                <title>Providing | Serch</title>
-                <meta name="description" content="Start providing your skills as a Serch partner" />
-                <meta property="og:title" content="Providing | Serch" />
-                <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ LinkAssets.logo } />
-            </Helmet>
+            <Title title="Providing" description='Start providing your skills as a Serch partner' />
             <Header />
             <div className="providing-header">
                 <div className="providing-container01">
