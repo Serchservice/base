@@ -9,17 +9,12 @@ import LinkAssets from '../../assets/LinkAssets'
 import Assets from '../../assets/Assets'
 import { Icon } from '@iconify/react'
 import Links from '../../config/Links'
+import Title from '../../config/Title'
 
 const Requesting = () => {
     return (
         <div className="requesting-container">
-            <Helmet>
-                <title>Requesting | Serch</title>
-                <meta name="description" content="Understand how requesting works in Serch" />
-                <meta property="og:title" content="Requesting | Serch" />
-                <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ LinkAssets.logo } />
-            </Helmet>
+            <Title title="Requesting" description='Understand how service requesting works in Serch' />
             <Header />
             <section className="requesting-section">
                 <main className="requesting-main">

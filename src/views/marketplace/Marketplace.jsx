@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 import './marketplace.css'
 import Header from '../../components/header/Header'
 import CountriesInSerch from '../../components/countries-in-serch/CountriesInSerch'
@@ -8,17 +7,12 @@ import Footer from '../../components/footer/Footer'
 import LinkAssets from '../../assets/LinkAssets'
 import { Icon } from '@iconify/react'
 import Links from '../../config/Links'
+import Title from '../../config/Title'
 
 const MarketPlace = () => {
     return (
         <div className="market-place-container">
-            <Helmet>
-                <title>Marketplace | Serch</title>
-                <meta name="description" content="Learn about our products, services and offerings" />
-                <meta property="og:title" content="Marketplace | Serch" />
-                <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ LinkAssets.logo } />
-            </Helmet>
+            <Title title="Marketplace" description='Learn about our products, services and offerings' />
             <Header />
             <h1 className="market-place-text">Your one-stop search for services</h1>
             <div className="market-place-header">

@@ -1,13 +1,16 @@
-import React, { useRef, useState } from 'react'
-import { Helmet } from 'react-helmet'
+import React, { useEffect, useRef, useState } from 'react'
 import Footer from '../../components/footer/Footer'
 import Header from '../../components/header/Header'
 import Loading from '../../components/loading/Loading'
+import './associate-account-setup.css'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import Links from '../../config/Links'
-import LinkAssets from '../../assets/LinkAssets'
+import { Axios } from '../../api/Axios'
+import SweetAlert from '../../config/SweetAlert'
+import { wait } from '@testing-library/user-event/dist/utils'
+import Title from '../../config/Title'
 
-const UnsubscribeNewsletter = () => {
+const VerifyAccountSetup = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [isVerified, setIsVerified] = useState(false);
     const [ searchParams ] = useSearchParams()
@@ -19,10 +22,10 @@ const UnsubscribeNewsletter = () => {
     }, [])
 
     const loadPage = () => {
-        var token = searchParams.get("emailAddress");
+        var token = searchParams.get("invite");
         if(!isMounted.current) {
             if(token != null) {
-                unsubscribe(token)
+                verifyLink(token)
             } else {
                 redirect(Links.error)
             }
@@ -35,15 +38,19 @@ const UnsubscribeNewsletter = () => {
         navigate(route)
     }
 
-    async function unsubscribe(token) {
+    async function verifyLink(token) {
         setIsLoading(true)
-        await Axios.get(`/company/newsletter/unsubscribe?email_address=${token}`)
+        await Axios.get(`/auth/associate?token=${token}`)
         .then((response) => {
             setIsLoading(false)
             if(response.data["code"] === 200) {
                 SweetAlert(response.data["message"], "success")
                 setIsVerified(true)
-                redirect(Links.home)
+
+                var scope = `scope=${response.data["data"]["scope"]}`
+                var name = `name=${response.data["data"]["name"]}`
+                var emailAddress = `email_address=${response.data["data"]["email_address"]}`
+                redirect(`${Links.associateAccountSetup}?${scope}&${name}&${emailAddress}`)
             } else {
                 setIsVerified(false)
                 SweetAlert(response.data["message"], "error")
@@ -60,21 +67,18 @@ const UnsubscribeNewsletter = () => {
 
     return (
         <div className="about-us-container">
-            <Helmet>
-                <title>Payment verification | Serch</title>
-                <meta name="description" content="Let's verify your payment" />
-                <meta property="og:title" content="Payment verification | Serch" />
-                <meta property="og:description" content="Let's verify your payment" />
-                <meta property="og:image" content={ LinkAssets.logo } />
-            </Helmet>
+            <Title title='You are invited' description='An invite link to join the Serch platform as an associate provider' />
             <Header />
             <div className="associate-account-setup-body">
+                <span className="associate-account-setup-header">Hey there,</span>
+                <span className="associate-account-setup-text">Nice of you to honor your invitation, wait a moment while we verify it</span>
+                <div className="associate-account-setup-divider"></div>
                 <Loading
                     isLoading={isLoading}
                     isVerified={isVerified}
-                    loading='Unsubscribing...'
-                    verified='Unsubscribed'
-                    unverified="Couldn't finish request"
+                    loading='Verifying link...'
+                    verified='Link verified'
+                    unverified='Error while verifying link'
                 />
             </div>
             <Footer />
@@ -82,4 +86,4 @@ const UnsubscribeNewsletter = () => {
     )
 }
 
-export default UnsubscribeNewsletter
+export default VerifyAccountSetup

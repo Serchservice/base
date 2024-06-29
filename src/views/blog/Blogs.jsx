@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useContentful } from 'react-contentful';
-import { Helmet } from 'react-helmet';
 import Footer from '../../components/footer/Footer';
 import Shimmer from '../../components/shimmer/Shimmer';
 import ItemGenerator from '../../config/ItemGenerator';
@@ -8,7 +7,7 @@ import BlogItem from './widgets/BlogItem';
 import './blogs.css';
 import BlogHeader from './widgets/BlogHeader';
 import Util from '../../config/Util';
-import LinkAssets from '../../assets/LinkAssets';
+import Title from '../../config/Title';
 
 const Blogs = () => {
     const [blogs, setBlog] = useState([]);
@@ -73,13 +72,7 @@ const Blogs = () => {
     if (loading || !fetched || error || !data || data["items"].length === 0) {
         return (
             <div className="blogs-container">
-                <Helmet>
-                    <title>Blogs | Serch</title>
-                    <meta name="description" content="Read through Serchservice blogs and gain more knowledge about us" />
-                    <meta property="og:title" content="Blogs | Serch" />
-                    <meta property="og:description" content="Read through Serchservice blogs and gain more knowledge about us" />
-                    <meta property="og:image" content={ LinkAssets.logo } />
-                </Helmet>
+                <Title title="Blogs" description='Read through Serchservice blogs and gain more knowledge about us' />
                 <BlogHeader />
                 <div className="blogs-content-description">
                     <h1 className="blogs-text08">Our Blogs</h1>
@@ -96,13 +89,7 @@ const Blogs = () => {
     } else {
         return (
             <div className="blogs-container">
-                <Helmet>
-                    <title>Blog | Serch</title>
-                    <meta name="description" content="Read through Serchservice blogs and gain more knowledge about us" />
-                    <meta property="og:title" content="Blog | Serch" />
-                    <meta property="og:description" content="Read through Serchservice blogs and gain more knowledge about us" />
-                    <meta property="og:image" content={ LinkAssets.logo } />
-                </Helmet>
+                <Title title="Blogs" description='Read through Serchservice blogs and gain more knowledge about us' />
                 <BlogHeader />
                 <div className="blogs-content-description">
                     <h1 className="blogs-text08">Our Blogs</h1>

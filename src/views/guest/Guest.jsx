@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 import './guest.css'
 import Footer from '../../components/footer/Footer'
 import Header from '../../components/header/Header'
@@ -9,17 +8,12 @@ import { Icon } from '@iconify/react'
 import LinkAssets from '../../assets/LinkAssets'
 import Assets from '../../assets/Assets'
 import Links from '../../config/Links'
+import Title from '../../config/Title'
 
 const Guest = () => {
     return (
         <div className="guest-container">
-            <Helmet>
-                <title>Guest | Serch</title>
-                <meta name="description" content="Requesting in Serch as a guest" />
-                <meta property="og:title" content="Guest | Serch" />
-                <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ LinkAssets.logo } />
-            </Helmet>
+            <Title title="Guests" description='Requesting in Serch as a guest - How it works' />
             <Header />
             <section className="guest-section">
                 <main className="guest-main">

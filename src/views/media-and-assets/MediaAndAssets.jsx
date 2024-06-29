@@ -7,6 +7,7 @@ import Assets from '../../assets/Assets'
 import Links from '../../config/Links'
 import { Icon } from '@iconify/react'
 import LinkAssets from '../../assets/LinkAssets'
+import Title from '../../config/Title'
 
 const MediaAndAssets = () => {
     const [ assets, setAssets ] = useState([
@@ -70,13 +71,7 @@ const MediaAndAssets = () => {
 
     return (
         <div className="media-and-assets-container">
-            <Helmet>
-                <title>Media and Assets | Serch</title>
-                <meta name="description" content="View and download Serch official branded assets" />
-                <meta property="og:title" content="Media and Assets | Serch" />
-                <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ LinkAssets.logo } />
-            </Helmet>
+            <Title title="Media and Assets" description='View and download Serch official branded assets' />
             <div className="media-and-assets-container1">
                 <img alt="image" src={ Assets.light200H } className="media-and-assets-image" />
                 <span className="media-and-assets-text">Serchservice Inc.</span>

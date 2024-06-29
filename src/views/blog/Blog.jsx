@@ -3,7 +3,6 @@ import React from "react";
 import { useContentful } from 'react-contentful';
 import { Helmet } from "react-helmet";
 import { useNavigate, useParams } from "react-router-dom";
-import Assets from "../../assets/Assets";
 import ContentRender from '../../components/contentful/ContentRender';
 import Footer from "../../components/footer/Footer";
 import Shimmer from "../../components/shimmer/Shimmer";
@@ -12,7 +11,7 @@ import Util from '../../config/Util';
 import "./blog.css";
 import BlogHeader from "./widgets/BlogHeader";
 import BlogItem from './widgets/BlogItem';
-import LinkAssets from "../../assets/LinkAssets";
+import Title from "../../config/Title";
 
 const Blog = () => {
     const { slug } = useParams()
@@ -33,13 +32,7 @@ const Blog = () => {
     if (loading || !fetched || error) {
         return (
             <div className="blog-content-body">
-                <Helmet>
-                    <title>Serch BlogHouse - Blogs | Serch</title>
-                    <meta name="description" content={`Loading our blog content for ${slug}`} />
-                    <meta property="og:title" content="Serch BlogHouse - Blogs | Serch" />
-                    <meta property="og:description" content={`Loading our blog content for ${slug}`} />
-                    <meta property="og:image" content={ LinkAssets.logo } />
-                </Helmet>
+                <Title title="BlogHouse" description='Read blog content' />
                 <BlogHeader />
                 <div className="blog-content-container">
                     <Shimmer height={300} percentWidth="100%" />
@@ -83,6 +76,14 @@ const Blog = () => {
         }
         return (
             <div className="blog-content-body">
+                <Title
+                    isBlog={true}
+                    title={content.title}
+                    description={content.description}
+                    image={content.image}
+                    keywords={content.categories}
+                    url={`${ Links.blogs }/${ slug }`}
+                />
                 <Helmet>
                     <title>{content.title} - Serch Blogs | Serch</title>
                     <meta name="description" content={content.description} />

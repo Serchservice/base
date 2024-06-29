@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 import './safety-guidelines.css'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
@@ -8,17 +7,12 @@ import LinkAssets from '../../assets/LinkAssets'
 import Assets from '../../assets/Assets'
 import { Icon } from '@iconify/react'
 import Links from '../../config/Links'
+import Title from '../../config/Title'
 
-const SafetyGuidelines = (props) => {
+const SafetyGuidelines = () => {
     return (
         <div className="safety-guidelines-container">
-            <Helmet>
-                <title>Safety Guidelines | Serch</title>
-                <meta name="description" content="Learn how to be safe when using the Serch platform" />
-                <meta property="og:title" content="Safety Guidelines | Serch" />
-                <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ LinkAssets.logo } />
-            </Helmet>
+            <Title title="Safety Guidelines" description='Learn how to be safe when using the Serch platform' />
             <Header />
             <div className="safety-guidelines-heading">
                 <h1 className="safety-guidelines-text">

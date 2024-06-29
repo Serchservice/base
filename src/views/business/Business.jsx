@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 import './business.css'
 import Assets from '../../assets/Assets'
 import LinkAssets from '../../assets/LinkAssets'
@@ -10,6 +9,7 @@ import DownloadBusinessApp from '../../components/app-download/DownloadBusinessA
 import CountriesInSerch from '../../components/countries-in-serch/CountriesInSerch'
 import Footer from '../../components/footer/Footer'
 import Links from '../../config/Links'
+import Title from '../../config/Title'
 
 const Business = () => {
     const [ plans, setPlans ] = useState([
@@ -33,13 +33,7 @@ const Business = () => {
 
     return (
         <div className="business-container">
-            <Helmet>
-                <title>Serch Business | Serch</title>
-                <meta name="description" content="Understand how Serch Business works" />
-                <meta property="og:title" content="Serch Business | Serch" />
-                <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ LinkAssets.logo } />
-            </Helmet>
+            <Title title="Business" description='Understand how Serch Business platform works' />
             <Header />
             <div className="business-header">
                 <div className="business-container01">

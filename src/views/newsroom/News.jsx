@@ -9,6 +9,7 @@ import './news.css';
 import NewsHeader from './widgets/NewsHeader';
 import Util from '../../config/Util';
 import LinkAssets from '../../assets/LinkAssets';
+import Title from '../../config/Title';
 
 const News = () => {
     const [news, setNews] = useState([]);
@@ -74,13 +75,7 @@ const News = () => {
     if (loading || !fetched || error || !data || data["items"].length === 0) {
         return (
             <div className="news-container">
-                <Helmet>
-                    <title>News | Serch</title>
-                    <meta name="description" content="Read through Serchservice news and get latest updates on what's happening" />
-                    <meta property="og:title" content="News | Serch" />
-                    <meta property="og:description" content="Read through Serchservice news and get latest updates on what's happening" />
-                    <meta property="og:image" content={ LinkAssets.logo } />
-                </Helmet>
+                <Title title="News" description='Learn about our happenings @Serch' />
                 <NewsHeader content='News' />
                 <div className="news-content-description">
                     <h1 className="news-text08">The Press</h1>
@@ -97,13 +92,7 @@ const News = () => {
     } else {
         return (
             <div className="news-container">
-                <Helmet>
-                    <title>News | Serch</title>
-                    <meta name="description" content="Read through Serchservice news and get latest updates on what's happening" />
-                    <meta property="og:title" content="News | Serch" />
-                    <meta property="og:description" content="Read through Serchservice news and get latest updates on what's happening" />
-                    <meta property="og:image" content={ LinkAssets.logo } />
-                </Helmet>
+                <Title title="News" description='Learn about our happenings @Serch' />
                 <NewsHeader content='News' />
                 <div className="news-content-description">
                     <h1 className="news-text08">The Press</h1>

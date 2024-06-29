@@ -1,15 +1,22 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Helmet } from 'react-helmet'
+import { Axios } from '../../api/Axios'
+import DataContext from '../../api/DataProvider'
 import Footer from '../../components/footer/Footer'
 import Header from '../../components/header/Header'
 import Loading from '../../components/loading/Loading'
-import { useNavigate, useSearchParams } from 'react-router-dom'
 import Links from '../../config/Links'
+import SweetAlert from '../../config/SweetAlert'
+import '../associate-account-setup/associate-account-setup.css'
+import { useNavigate, useSearchParams } from 'react-router-dom'
+import { wait } from '@testing-library/user-event/dist/utils'
 import LinkAssets from '../../assets/LinkAssets'
+import Title from '../../config/Title'
 
-const VerifyPayment = () => {
+const VerifyCertificate = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [isVerified, setIsVerified] = useState(false);
+    const {setData} = useContext(DataContext)
     const [ searchParams ] = useSearchParams()
     const isMounted = useRef(false);
     const navigate = useNavigate()
@@ -19,10 +26,10 @@ const VerifyPayment = () => {
     }, [])
 
     const loadPage = () => {
-        var token = searchParams.get("reference");
+        var token = searchParams.get("verify");
         if(!isMounted.current) {
             if(token != null) {
-                verifyPayment(token)
+                verifyCertificate(token)
             } else {
                 redirect(Links.error)
             }
@@ -35,15 +42,16 @@ const VerifyPayment = () => {
         navigate(route)
     }
 
-    async function verifyPayment(token) {
+    async function verifyCertificate(token) {
         setIsLoading(true)
-        await Axios.get(`/payment/verify?reference=${token}`)
+        await Axios.get(`/certificate/verify?token=${token}`)
         .then((response) => {
             setIsLoading(false)
             if(response.data["code"] === 200) {
                 SweetAlert(response.data["message"], "success")
                 setIsVerified(true)
-                redirect(Links.home)
+                setData(response.data["data"])
+                redirect(Links.viewCertificate)
             } else {
                 setIsVerified(false)
                 SweetAlert(response.data["message"], "error")
@@ -60,13 +68,7 @@ const VerifyPayment = () => {
 
     return (
         <div className="about-us-container">
-            <Helmet>
-                <title>Payment verification | Serch</title>
-                <meta name="description" content="Let's verify your payment" />
-                <meta property="og:title" content="Payment verification | Serch" />
-                <meta property="og:description" content="Let's verify your payment" />
-                <meta property="og:image" content={ LinkAssets.logo } />
-            </Helmet>
+            <Title title="Reading Certificate Link" description="Let's understand this link" />
             <Header />
             <div className="associate-account-setup-body">
                 <Loading
@@ -82,4 +84,4 @@ const VerifyPayment = () => {
     )
 }
 
-export default VerifyPayment
+export default VerifyCertificate

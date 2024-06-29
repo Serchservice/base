@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Helmet } from 'react-helmet'
 import './associate-account-setup.css'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
@@ -10,7 +9,7 @@ import DeviceInfo from '../../api/DeviceInfo'
 import { Axios } from '../../api/Axios'
 import { wait } from '@testing-library/user-event/dist/utils'
 import Links from '../../config/Links'
-import LinkAssets from '../../assets/LinkAssets'
+import Title from '../../config/Title'
 
 const AssociateAccountSetup = () => {
     const [name, setName] = useState("")
@@ -93,13 +92,7 @@ const AssociateAccountSetup = () => {
 
     return (
         <div className="about-us-container">
-            <Helmet>
-                <title>Setup your associate account | Serch</title>
-                <meta name="description" content="Join the Serch platform as an associate provider and increase your earnings" />
-                <meta property="og:title" content="Setup your associate account | Serch" />
-                <meta property="og:description" content="Join the Serch platform as an associate provider and increase your earnings" />
-                <meta property="og:image" content={ LinkAssets.logo } />
-            </Helmet>
+            <Title title="Setup your associate account" description='Join the Serch platform as an associate provider and increase your earnings' />
             <Header />
             <div className="associate-account-setup-body">
                 <span className="associate-account-setup-header">Welcome {name}</span>

@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { Helmet } from 'react-helmet'
 import './countries-in-serch.css'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
-import LinkAssets from '../../assets/LinkAssets'
+import Title from '../../config/Title'
 
 const CountriesInSerch = () => {
     const [ countries, setCountries ] = useState([
@@ -24,13 +23,7 @@ const CountriesInSerch = () => {
 
     return (
         <div className="countries-in-serch-container">
-            <Helmet>
-                <title>Countries In Serch | Serch</title>
-                <meta name="description" content="View all the countries and states we are launched in" />
-                <meta property="og:title" content="Countries In Serch | Serch" />
-                <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ LinkAssets.logo } />
-            </Helmet>
+            <Title title="Countries In Serch" description='View all countries and states we are launched in' />
             <Header />
             <div className="countries-in-serch-heading">
                 <h1 className="countries-in-serch-heading-title">

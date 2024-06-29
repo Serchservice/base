@@ -2,7 +2,6 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { wait } from "@testing-library/user-event/dist/utils";
 import React from "react";
 import { useContentful } from 'react-contentful';
-import { Helmet } from "react-helmet";
 import { useNavigate, useParams } from "react-router-dom";
 import ContentRender from "../../components/contentful/ContentRender";
 import Footer from "../../components/footer/Footer";
@@ -10,7 +9,6 @@ import Header from "../../components/header/Header";
 import Shimmer from "../../components/shimmer/Shimmer";
 import Links from "../../config/Links";
 import "./legalDocument.css";
-import LinkAssets from "../../assets/LinkAssets";
 
 const LegalDocument = () => {
     const { slug } = useParams()
@@ -39,13 +37,7 @@ const LegalDocument = () => {
     if(loading || !fetched || error) {
         return (
             <div className="legal-document-container">
-                <Helmet>
-                    <title>Legal Hub | Serch</title>
-                    <meta name="description" content="Serch legal documents on different policies and guidelines" />
-                    <meta property="og:title" content="Legal Hub | Serch" />
-                    <meta property="og:description" content="Serch legal documents on different policies and guidelines" />
-                    <meta property="og:image" content={ LinkAssets.logo } />
-                </Helmet>
+                <Title title="Legal Hub" description='Serch policies and guiding rules' />
                 <Header />
                 <div className="legal-document-header">
                     <Icon icon="solar:arrow-left-line-duotone" onClick={back} data-role="accordion-icon" className="legal-document-icon" />
@@ -75,13 +67,13 @@ const LegalDocument = () => {
     } else {
         return (
             <div className="legal-document-container">
-                <Helmet>
-                    <title>{data["items"]['0']['fields']['header']} - Legal Hub | Serch</title>
-                    <meta name="description" content={data["items"]['0']['fields']['description']} />
-                    <meta property="og:title" content={`${data["items"]['0']['fields']['header']} - Legal Hub | Serch`} />
-                    <meta property="og:description" content={data["items"]['0']['fields']['description']} />
-                    <meta property="og:image" content={ LinkAssets.logo } />
-                </Helmet>
+                <Title
+                    isBlog={true}
+                    title={data["items"]['0']['fields']['header']}
+                    description={data["items"]['0']['fields']['description']}
+                    keywords={data["items"]['0']['fields']['categories']}
+                    url={`${ Links.legal }/${ slug }`}
+                />
                 <Header />
                 <div className="legal-document-header">
                     <Icon icon="solar:arrow-left-line-duotone" onClick={back} data-role="accordion-icon" className="legal-document-icon" />

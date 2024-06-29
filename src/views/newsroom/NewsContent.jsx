@@ -1,9 +1,7 @@
 import { wait } from "@testing-library/user-event/dist/utils";
 import React from "react";
 import { useContentful } from 'react-contentful';
-import { Helmet } from "react-helmet";
 import { useNavigate, useParams } from "react-router-dom";
-import Assets from "../../assets/Assets";
 import ContentRender from '../../components/contentful/ContentRender';
 import Footer from "../../components/footer/Footer";
 import Shimmer from "../../components/shimmer/Shimmer";
@@ -12,7 +10,7 @@ import Util from '../../config/Util';
 import "./newsContent.css";
 import NewsHeader from "./widgets/NewsHeader";
 import NewsItem from './widgets/NewsItem';
-import LinkAssets from "../../assets/LinkAssets";
+import Title from "../../config/Title";
 
 const NewsContent = () => {
     const { slug } = useParams()
@@ -33,13 +31,7 @@ const NewsContent = () => {
     if (loading || !fetched || error) {
         return (
             <div className="news-content-body">
-                <Helmet>
-                    <title>Serch Newsroom - News | Serch</title>
-                    <meta name="description" content={`Loading our news content for ${slug}`} />
-                    <meta property="og:title" content="Serch Newsroom - News | Serch" />
-                    <meta property="og:description" content={`Loading our news content for ${slug}`} />
-                    <meta property="og:image" content={ LinkAssets.logo } />
-                </Helmet>
+                <Title title="News" description="Read our news" />
                 <NewsHeader />
                 <div className="news-content-container">
                     <Shimmer height={300} percentWidth="100%" />
@@ -84,13 +76,14 @@ const NewsContent = () => {
         }
         return (
             <div className="news-content-body">
-                <Helmet>
-                    <title>{content.title} - Serch News | Serch</title>
-                    <meta name="description" content={content.description} />
-                    <meta property="og:title" content={`${content.title} - Serch News | Serch`} />
-                    <meta property="og:description" content={content.description} />
-                    <meta property="og:image" content={ content.image } />
-                </Helmet>
+                <Title
+                    isBlog={true}
+                    title={content.title}
+                    description={content.description}
+                    image={content.image}
+                    keywords={content.categories}
+                    url={`${ Links.news }/${ slug }`}
+                />
                 <NewsHeader />
                 <div className="news-content-container">
                     <div className="news-content-header">

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 import './provideSharing.css'
 import Assets from '../../assets/Assets'
 import Header from '../../components/header/Header'
@@ -9,6 +8,7 @@ import Footer from '../../components/footer/Footer'
 import LinkAssets from '../../assets/LinkAssets'
 import { Icon } from '@iconify/react'
 import Links from '../../config/Links'
+import Title from '../../config/Title'
 
 const ProvideSharing = () => {
     const InternalLinks = {
@@ -18,13 +18,7 @@ const ProvideSharing = () => {
 
     return (
         <div className="provideSharing-container">
-            <Helmet>
-                <title>ProvideSharing | Serch</title>
-                <meta name="description" content="Share that provider you find to be the best, earn more" />
-                <meta property="og:title" content="ProvideSharing | Serch" />
-                <meta property="og:description" content="A requestSharing and provideSharing company" />
-                <meta property="og:image" content={ LinkAssets.logo } />
-            </Helmet>
+            <Title title="ProvideSharing" description='Share that provider you find to be the best, earn more' />
             <Header />
             <div className="provideSharing-header">
                 <div className="provideSharing-container01">

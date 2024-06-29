@@ -1,12 +1,11 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
 import './leadership.css'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 import ItemGenerator from '../../config/ItemGenerator'
 import Shimmer from '../../components/shimmer/Shimmer'
 import { useContentful } from 'react-contentful';
-import LinkAssets from '../../assets/LinkAssets'
+import Title from '../../config/Title'
 
 const Leadership = () => {
     const { data, error, fetched, loading } = useContentful({ contentType: 'teamGroup' });
@@ -14,13 +13,7 @@ const Leadership = () => {
     if (loading || !fetched || error || !data || data["items"].length === 0) {
         return (
             <div className="leadership-container">
-                <Helmet>
-                    <title>Leadership | Serch</title>
-                    <meta name="description" content="Serch governance and structure" />
-                    <meta property="og:title" content="Leadership | Serch" />
-                    <meta property="og:description" content="A requestSharing and provideSharing company" />
-                    <meta property="og:image" content={ LinkAssets.logo } />
-                </Helmet>
+                <Title title="Leadership" description='Serch governance and structure' />
                 <Header />
                 <div className="leadership-container1">
                     <div className="leadership-container2">
@@ -80,13 +73,7 @@ const Leadership = () => {
         teams.boards.sort((a, b) => a.order - b.order);
         return (
             <div className="leadership-container">
-                <Helmet>
-                    <title>Leadership | Serch</title>
-                    <meta name="description" content="Serch governance and structure" />
-                    <meta property="og:title" content="Leadership | Serch" />
-                    <meta property="og:description" content="A requestSharing and provideSharing company" />
-                    <meta property="og:image" content={ LinkAssets.logo } />
-                </Helmet>
+                <Title title="Leadership" description='Serch governance and structure' />
                 <Header />
                 <div className="leadership-container1">
                     <div className="leadership-container2">
