@@ -1,17 +1,15 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
-import { Helmet } from 'react-helmet'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { Axios } from '../../api/Axios'
 import DataContext from '../../api/DataProvider'
 import Footer from '../../components/footer/Footer'
 import Header from '../../components/header/Header'
 import Loading from '../../components/loading/Loading'
 import Links from '../../config/Links'
-import SweetAlert from '../../config/SweetAlert'
 import '../associate-account-setup/associate-account-setup.css'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { wait } from '@testing-library/user-event/dist/utils'
-import LinkAssets from '../../assets/LinkAssets'
 import Title from '../../config/Title'
+import notify from '../../config/Notify'
 
 const VerifyCertificate = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -48,20 +46,20 @@ const VerifyCertificate = () => {
         .then((response) => {
             setIsLoading(false)
             if(response.data["code"] === 200) {
-                SweetAlert(response.data["message"], "success")
+                notify.success(response.data["message"])
                 setIsVerified(true)
                 setData(response.data["data"])
                 redirect(Links.viewCertificate)
             } else {
                 setIsVerified(false)
-                SweetAlert(response.data["message"], "error")
+                notify.error(response.data["message"])
             }
         }).catch((error) => {
             setIsLoading(false)
             if(error?.code === "ERR_NETWORK") {
-                SweetAlert("Network error. Please check your internet connection", "error")
+                notify.error("Network error. Please check your internet connection")
             } else {
-                SweetAlert(error, "error")
+                notify.error(error)
             }
         })
     }

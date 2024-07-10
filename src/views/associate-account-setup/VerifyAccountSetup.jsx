@@ -6,9 +6,9 @@ import './associate-account-setup.css'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import Links from '../../config/Links'
 import { Axios } from '../../api/Axios'
-import SweetAlert from '../../config/SweetAlert'
 import { wait } from '@testing-library/user-event/dist/utils'
 import Title from '../../config/Title'
+import notify from '../../config/Notify'
 
 const VerifyAccountSetup = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -44,7 +44,7 @@ const VerifyAccountSetup = () => {
         .then((response) => {
             setIsLoading(false)
             if(response.data["code"] === 200) {
-                SweetAlert(response.data["message"], "success")
+                notify.success(response.data["message"])
                 setIsVerified(true)
 
                 var scope = `scope=${response.data["data"]["scope"]}`
@@ -53,14 +53,14 @@ const VerifyAccountSetup = () => {
                 redirect(`${Links.associateAccountSetup}?${scope}&${name}&${emailAddress}`)
             } else {
                 setIsVerified(false)
-                SweetAlert(response.data["message"], "error")
+                notify.error(response.data["message"])
             }
         }).catch((error) => {
             setIsLoading(false)
             if(error?.code === "ERR_NETWORK") {
-                SweetAlert("Network error. Please check your internet connection", "error")
+                notify.error("Network error. Please check your internet connection")
             } else {
-                SweetAlert(error, "error")
+                notify.error(error)
             }
         })
     }

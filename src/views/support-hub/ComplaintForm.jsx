@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import './complaintForm.css'
-import SweetAlert from '../../config/SweetAlert'
 import { Axios } from '../../api/Axios'
 import Loader from '../../components/loading/Loader'
+import notify from '../../config/Notify'
 
 const ComplaintForm = () => {
     const [firstName, setFirstName] = useState("")
@@ -28,21 +28,21 @@ const ComplaintForm = () => {
                 .then((response) => {
                     setIsLoading(false)
                     if(response.data["code"] === 200 || response.data["code"] === 201) {
-                        SweetAlert(response.data["message"], "success")
+                        notify.success(response.data["message"])
                         setEmailAddress("")
                         setFirstName("")
                         setLastName("")
                         setComment("")
                     } else {
-                        SweetAlert(response.data["message"], "error")
+                        notify.error(response.data["message"])
                     }
                 })
                 .catch((error) => {
                     setIsLoading(false)
                     if(error?.code === "ERR_NETWORK") {
-                        SweetAlert("Network error. Please check your internet connection", "error")
+                        notify.error("Network error. Please check your internet connection")
                     } else {
-                        SweetAlert(error, "error")
+                        notify.error(error)
                     }
                 })
         }

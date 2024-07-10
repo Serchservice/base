@@ -34,7 +34,6 @@ import AssociateAccountSetup from './views/associate-account-setup/AssociateAcco
 import VerifyCertificate from './views/certificate/VerifyCertificate';
 import ViewCertificate from './views/certificate/ViewCertificate';
 import VerifyPayment from './views/payment-verification/VerifyPayment';
-import { SnackbarProvider } from 'notistack';
 import { DataProvider } from './api/DataProvider';
 import UnsubscribeNewsletter from './views/newsletter/UnsubscribeNewsletter';
 import Legal from './views/legal/Legal';
@@ -45,6 +44,7 @@ import NewsContent from './views/newsroom/NewsContent';
 import Blog from './views/blog/Blog';
 import Blogs from './views/blog/Blogs';
 import Keys from './api/Keys';
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
     const contentfulClient = new ContentfulClient({
@@ -54,15 +54,7 @@ const App = () => {
 
     return (
         <>
-            <SnackbarProvider
-                maxSnack={2}
-                iconVariant={{
-                    success: '✅ ',
-                    error: '✖️ ',
-                    warning: '⚠️ ',
-                    info: 'ℹ️ ',
-                }}
-            />
+            <ToastContainer />
             <ContentfulProvider client={contentfulClient}>
                 <Router>
                     <ScrollToTop>

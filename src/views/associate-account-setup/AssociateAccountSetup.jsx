@@ -4,12 +4,12 @@ import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import Loader from '../../components/loading/Loader'
-import SweetAlert from '../../config/SweetAlert'
 import DeviceInfo from '../../api/DeviceInfo'
 import { Axios } from '../../api/Axios'
 import { wait } from '@testing-library/user-event/dist/utils'
 import Links from '../../config/Links'
 import Title from '../../config/Title'
+import notify from '../../config/Notify'
 
 const AssociateAccountSetup = () => {
     const [name, setName] = useState("")
@@ -58,9 +58,9 @@ const AssociateAccountSetup = () => {
 
     async function setup() {
         if(password === "" || confirmPassword === "") {
-            SweetAlert("Set your password", "info")
+            notify.warning("Set your password")
         } else if(password !== confirmPassword) {
-            SweetAlert("Password does not match", "error")
+            notify.warning("Password does not match")
         } else {
             setIsLoading(true)
             await Axios.post("/auth/associate", {
@@ -73,18 +73,18 @@ const AssociateAccountSetup = () => {
                     setIsLoading(false)
                     if(response.data["code"] === 200 || response.data["code"] === 201) {
                         setEmailAddress("")
-                        SweetAlert(response.data["message"], "success")
+                        notify.success(response.data["message"])
                         redirect(Links.home)
                     } else {
-                        SweetAlert(response.data["message"], "error")
+                        notify.error(response.data["message"])
                     }
                 })
                 .catch((error) => {
                     setIsLoading(false)
                     if(error?.code === "ERR_NETWORK") {
-                        SweetAlert("Network error. Please check your internet connection", "error")
+                        notify.error("Network error. Please check your internet connection")
                     } else {
-                        SweetAlert(error, "error")
+                        notify.error(error)
                     }
                 })
         }
