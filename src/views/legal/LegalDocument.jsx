@@ -8,6 +8,7 @@ import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import Shimmer from "../../components/shimmer/Shimmer";
 import Links from "../../config/Links";
+import Title from "../../config/Title";
 import "./legalDocument.css";
 
 const LegalDocument = () => {
