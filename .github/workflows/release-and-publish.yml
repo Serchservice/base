@@ -23,8 +23,13 @@ jobs:
 
       - name: Authenticate to GitHub Packages
         env:
-          PKG_AUTH_TOKEN: ${{ secrets.PKG_AUTH_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.PKG_AUTH_TOKEN }}
         run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.PKG_AUTH_TOKEN }}" > ~/.npmrc
+
+      - name: Check NPM_AUTH_TOKEN
+        run: echo "NPM_AUTH_TOKEN is set"
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.PKG_AUTH_TOKEN }}
 
       - name: Install dependencies
         run: npm install
@@ -63,8 +68,13 @@ jobs:
 
       - name: Authenticate to GitHub Packages
         env:
-          PKG_AUTH_TOKEN: ${{ secrets.PKG_AUTH_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.PKG_AUTH_TOKEN }}
         run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.PKG_AUTH_TOKEN }}" > ~/.npmrc
+
+      - name: Check NPM_AUTH_TOKEN
+        run: echo "NPM_AUTH_TOKEN is set"
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.PKG_AUTH_TOKEN }}
 
       - name: Install dependencies
         run: npm install
