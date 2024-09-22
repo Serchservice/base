@@ -24,12 +24,12 @@
     },
     "dependencies": {
         "@fortawesome/free-brands-svg-icons": "^6.6.0",
-        "@iconify/react": "^4.1.1",
+        "@iconify/react": "^5.0.2",
         "@serchservice/contently": "^1.12.734",
         "@serchservice/web-ui-kit": "^1.1.85",
         "@types/react": "^18.3.3",
         "@types/react-dom": "^18.3.0",
-        "axios": "^1.6.2",
+        "axios": "^1.7.4",
         "detect.js": "^2.2.3",
         "js-cookie": "^3.0.5",
         "mobx": "^6.12.4",
@@ -42,8 +42,7 @@
         "react-helmet": "^6.1.0",
         "react-helmet-async": "^2.0.5",
         "react-router-dom": "^6.22.3",
-        "store2": "^2.14.3",
-        "web-vitals": "^2.1.4"
+        "store2": "^2.14.3"
     },
     "devDependencies": {
         "@eslint/js": "^9.9.0",
