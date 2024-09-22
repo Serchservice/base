@@ -6,7 +6,7 @@ class Keys {
     static CONTENTFUL_SPACE = import.meta.env.VITE_CONTENTFUL_SPACE ?? "";
 
     /// BASE URL SERCH SERVER
-    static BASE_URL = import.meta.env.VITE_BASE_URL_DEV ?? "";
+    static BASE_URL = import.meta.env.VITE_BASE_URL ?? "";
 
     /// LOCATION IP URL
     static IP_URL = 'https://api.ipify.org?format=json';
