@@ -21,7 +21,7 @@ jobs:
           node-version: 20
 
       - name: Authenticate to GitHub Packages
-        run: echo "//npm.pkg.github.com/:_authToken=\${{ secrets.PK_AUTH_TOKEN }}" > ~/.npmrc
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.PKG_AUTH_TOKEN }}" > ~/.npmrc
 
       - name: Install dependencies
         run: npm install
