@@ -1,0 +1,180 @@
+.plan-body {
+    gap: var(--dl-space-space-threeunits);
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-top: var(--dl-space-space-twounits);
+    padding-left: var(--dl-space-space-twounits);
+    border-radius: 20px;
+    padding-right: var(--dl-space-space-twounits);
+    flex-direction: column;
+    padding-bottom: var(--dl-space-space-twounits);
+    justify-content: center;
+}
+
+.plan-header {
+    gap: var(--dl-space-space-oneandhalfunits);
+    flex: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-self: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.plan-header-image {
+    width: 80px;
+    align-self: flex-start;
+    object-fit: cover;
+}
+
+.plan-header-text {
+    color: var(--dl-color-gray-white);
+    font-size: 1.5em;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.plan-header-text-unique {
+    gap: var(--dl-space-space-halfunit);
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.plan-header-text-unique-amount {
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.plan-header-text-unique-duration {
+    color: rgb(179, 179, 179);
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.plan-header-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    line-height: 22px;
+}
+
+.plan-benefits {
+    gap: var(--dl-space-space-unit);
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.plan-benefit-mark {
+    gap: var(--dl-space-space-halfunit);
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.plan-benefit-check {
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    border-radius: 50%;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #414141;
+}
+
+.plan-benefit-checked {
+    fill: var(--dl-color-gray-white);
+    width: 12px;
+    height: 12px;
+}
+
+.plan-benefit-label {
+    color: rgb(194, 198, 204);
+    font-size: 14px;
+    line-height: 25px;
+}
+
+.plan-sub-plans {
+    gap: var(--dl-space-space-unit);
+    flex: 0 0 auto;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.plan-sub-plan {
+    flex: 0 0 auto;
+    width: 200px;
+    height: auto;
+    display: flex;
+    padding: var(--dl-space-space-unit);
+    align-items: center;
+    border-color: var(--dl-color-gray-white);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 24px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.plan-sub-plan-header {
+    flex: 0 0 auto;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.plan-sub-plan-period {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    text-align: center;
+    line-height: 36px;
+}
+
+.plan-sub-plan-discount {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: var(--dl-space-space-halfunit);
+}
+
+.plan-sub-plan-amount {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    font-style: normal;
+    margin-top: var(--dl-space-space-unit);
+    font-weight: 600;
+}
+
+@media(max-width: 767px) {
+    .plan-body {
+        padding-top: var(--dl-space-space-fourunits);
+        padding-left: var(--dl-space-space-oneandhalfunits);
+        padding-right: var(--dl-space-space-oneandhalfunits);
+        padding-bottom: var(--dl-space-space-fourunits);
+    }
+}
+
+@media(max-width: 480px) {
+    .plan-header-text-unique {
+        gap: var(--dl-space-space-oneandhalfunits);
+    }
+}

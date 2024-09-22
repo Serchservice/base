@@ -1,0 +1,15 @@
+.app-component-container {
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    padding: var(--dl-space-space-sixunits);
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--dl-color-gray-black);
+}
+
+.app-component-image {
+    width: 200px;
+    object-fit: cover;
+}
