@@ -24,7 +24,7 @@ jobs:
       - name: Authenticate to GitHub Packages
         env:
           NPM_AUTH_TOKEN: ${{ secrets.PKG_AUTH_TOKEN }}
-        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.PKG_AUTH_TOKEN }}" > ~/.npmrc
+        run: npm config set "//npm.pkg.github.com/:_authToken" "${{ secrets.PKG_AUTH_TOKEN }}"
 
       - name: Check NPM_AUTH_TOKEN
         run: echo "NPM_AUTH_TOKEN is set"
