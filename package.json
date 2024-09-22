@@ -1,7 +1,7 @@
 {
     "name": "base",
     "private": true,
-    "version": "2.1.2",
+    "version": "2.1.21",
     "type": "module",
     "proxy": "https://api.serchservice.com/",
     "description": "Base landing page website for Serchservice Inc.",
