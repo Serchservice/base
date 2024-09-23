@@ -21,10 +21,15 @@ jobs:
         with:
           node-version: 20
 
-      - name: Authenticate to GitHub Packages
-        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.PKG_AUTH_TOKEN }}" > ~/.npmrc
+      - name: Check PKG_AUTH_TOKEN
+        env:
+          PKG_AUTH_TOKEN: ${{ secrets.PKG_AUTH_TOKEN }}
+        run: |
+          echo "PKG_AUTH_TOKEN is set to: $PKG_AUTH_TOKEN"
 
       - name: Install dependencies
+        env:
+          PKG_AUTH_TOKEN: ${{ secrets.PKG_AUTH_TOKEN }}
         run: npm install
 
       - name: Get version from package.json
@@ -59,10 +64,15 @@ jobs:
         with:
           node-version: 20
 
-      - name: Authenticate to GitHub Packages
-        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.PKG_AUTH_TOKEN }}" > ~/.npmrc
+      - name: Check PKG_AUTH_TOKEN
+        env:
+          PKG_AUTH_TOKEN: ${{ secrets.PKG_AUTH_TOKEN }}
+        run: |
+          echo "PKG_AUTH_TOKEN is set"
 
       - name: Install dependencies
+        env:
+          PKG_AUTH_TOKEN: ${{ secrets.PKG_AUTH_TOKEN }}
         run: npm install
 
       - name: Get version from package.json

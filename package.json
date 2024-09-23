@@ -1,7 +1,7 @@
 {
     "name": "base",
     "private": true,
-    "version": "2.1.24",
+    "version": "2.1.25",
     "type": "module",
     "proxy": "https://api.serchservice.com/",
     "description": "Base landing page website for Serchservice Inc.",
@@ -25,8 +25,8 @@
     "dependencies": {
         "@fortawesome/free-brands-svg-icons": "^6.6.0",
         "@iconify/react": "^5.0.2",
-        "@serchservice/contently": "^1.12.734",
-        "@serchservice/web-ui-kit": "^1.1.85",
+        "@serchservice/contently": "^1.12.744",
+        "@serchservice/web-ui-kit": "^1.1.89",
         "@types/react": "^18.3.3",
         "@types/react-dom": "^18.3.0",
         "axios": "^1.7.4",
