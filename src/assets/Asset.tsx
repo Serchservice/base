@@ -4,11 +4,11 @@ class AssetInstance {
      */
     get logo() {
         return {
-            squared: require("./logo/squared.png") as string,
-            tagBlack: require("./logo/tagBlack.png") as string,
-            tagWhite: require("./logo/tagWhite.png") as string,
-            black: require("./logo/black.png") as string,
-            white: require("./logo/white.png") as string,
+            squared: new URL("./logo/squared.png", import.meta.url).href,
+            tagBlack: new URL("./logo/tagBlack.png", import.meta.url).href,
+            tagWhite: new URL("./logo/tagWhite.png", import.meta.url).href,
+            black: new URL("./logo/black.png", import.meta.url).href,
+            white: new URL("./logo/white.png", import.meta.url).href,
         }
     }
 
@@ -17,12 +17,12 @@ class AssetInstance {
      */
     get app() {
         return {
-            user: require("./app/User.png") as string,
-            provider: require("./app/Provider.png") as string,
-            business: require("./app/Business.png") as string,
-            businessShort: require("./app/ShortBusinessPhone.png") as string,
-            providerShort: require("./app/ShortProviderPhone.png") as string,
-            userShort: require("./app/ShortUserPhone.png") as string,
+            user: new URL("./app/User.png", import.meta.url).href,
+            provider: new URL("./app/Provider.png", import.meta.url).href,
+            business: new URL("./app/Business.png", import.meta.url).href,
+            businessShort: new URL("./app/ShortBusinessPhone.png", import.meta.url).href,
+            providerShort: new URL("./app/ShortProviderPhone.png", import.meta.url).href,
+            userShort: new URL("./app/ShortUserPhone.png", import.meta.url).href,
         }
     }
 
@@ -31,12 +31,12 @@ class AssetInstance {
      */
     get home() {
         return {
-            business: require("./home/business.jpg") as string,
-            repair: require("./home/repair.jpg") as string,
-            grow: require("./home/grow.jpg") as string,
-            drive: require("./home/drive.png") as string,
-            request: require("./home/request.png") as string,
-            speak: require("./home/speak.png") as string,
+            business: new URL("./home/business.jpg", import.meta.url).href,
+            repair: new URL("./home/repair.jpg", import.meta.url).href,
+            grow: new URL("./home/grow.jpg", import.meta.url).href,
+            drive: new URL("./home/drive.png", import.meta.url).href,
+            request: new URL("./home/request.png", import.meta.url).href,
+            speak: new URL("./home/speak.png", import.meta.url).href,
         }
     }
 
@@ -45,9 +45,9 @@ class AssetInstance {
      */
     get about() {
         return {
-            background: require("./about/background.jpg") as string,
-            mission: require("./about/mission.jpg") as string,
-            safety: require("./about/safety.png") as string,
+            background: new URL("./about/background.jpg", import.meta.url).href,
+            mission: new URL("./about/mission.jpg", import.meta.url).href,
+            safety: new URL("./about/safety.png", import.meta.url).href,
         }
     }
 
@@ -56,7 +56,7 @@ class AssetInstance {
      */
     get marketplace() {
         return {
-            background: require("./marketplace/background.jpg") as string,
+            background: new URL("./marketplace/background.jpg", import.meta.url).href,
         }
     }
 
@@ -65,7 +65,7 @@ class AssetInstance {
      */
     get reserve() {
         return {
-            time: require("./reserve/time.jpg") as string,
+            time: new URL("./reserve/time.jpg", import.meta.url).href,
         }
     }
 
@@ -74,7 +74,7 @@ class AssetInstance {
      */
     get tip2fix() {
         return {
-            diy: require("./tip2fix/diy.jpg") as string,
+            diy: new URL("./tip2fix/diy.jpg", import.meta.url).href,
         }
     }
 
@@ -83,7 +83,7 @@ class AssetInstance {
      */
     get countries() {
         return {
-            background: require("./countries/background.jpg") as string,
+            background: new URL("./countries/background.jpg", import.meta.url).href,
         }
     }
 
@@ -92,7 +92,7 @@ class AssetInstance {
      */
     get support() {
         return {
-            background: require("./support/background.jpg") as string,
+            background: new URL("./support/background.jpg", import.meta.url).href,
         }
     }
 
@@ -101,7 +101,7 @@ class AssetInstance {
      */
     get safety() {
         return {
-            background: require("./safety/background.jpg") as string,
+            background: new URL("./safety/background.jpg", import.meta.url).href,
         }
     }
 
@@ -110,10 +110,10 @@ class AssetInstance {
      */
     get career() {
         return {
-            background: require("./career/background.jpg") as string,
-            life: require("./career/life.jpg") as string,
-            place: require("./career/place.jpg") as string,
-            team: require("./career/team.jpg") as string,
+            background: new URL("./career/background.jpg", import.meta.url).href,
+            life: new URL("./career/life.jpg", import.meta.url).href,
+            place: new URL("./career/place.jpg", import.meta.url).href,
+            team: new URL("./career/team.jpg", import.meta.url).href,
         }
     }
 
@@ -122,39 +122,39 @@ class AssetInstance {
      */
     get steps() {
         return {
-            consent: require("./steps/consent.png") as string,
-            createAccount: require("./steps/createAccount.png") as string,
-            upload: require("./steps/upload.png") as string,
-            verifyStatus: require("./steps/verifyStatus.png") as string,
-            categorySelector: require("./steps/categorySelector.png") as string,
-            locationEntry: require("./steps/locationEntry.png") as string,
-            rating: require("./steps/rating.png") as string,
-            tip2fix: require("./steps/tip2fix.png") as string,
-            goActive: require("./steps/goActive.png") as string,
-            mentor: require("./steps/mentor.png") as string,
-            sharedLink: require("./steps/sharedLink.png") as string,
-            safety: require("./steps/safety.png") as string,
-            requestShare: require("./steps/requestShare.png") as string,
-            track: require("./steps/track.png") as string,
-            activity: require("./steps/activity.png") as string,
-            discuss: require("./steps/discuss.png") as string,
-            requestMode: require("./steps/requestMode.png") as string,
-            auth: require("./steps/auth.png") as string,
-        }
+            consent: new URL('./steps/consent.png', import.meta.url).href,
+            createAccount: new URL('./steps/createAccount.png', import.meta.url).href,
+            upload: new URL('./steps/upload.png', import.meta.url).href,
+            verifyStatus: new URL('./steps/verifyStatus.png', import.meta.url).href,
+            categorySelector: new URL('./steps/categorySelector.png', import.meta.url).href,
+            locationEntry: new URL('./steps/locationEntry.png', import.meta.url).href,
+            rating: new URL('./steps/rating.png', import.meta.url).href,
+            tip2fix: new URL('./steps/tip2fix.png', import.meta.url).href,
+            goActive: new URL('./steps/goActive.png', import.meta.url).href,
+            mentor: new URL('./steps/mentor.png', import.meta.url).href,
+            sharedLink: new URL('./steps/sharedLink.png', import.meta.url).href,
+            safety: new URL('./steps/safety.png', import.meta.url).href,
+            requestShare: new URL('./steps/requestShare.png', import.meta.url).href,
+            track: new URL('./steps/track.png', import.meta.url).href,
+            activity: new URL('./steps/activity.png', import.meta.url).href,
+            discuss: new URL('./steps/discuss.png', import.meta.url).href,
+            requestMode: new URL('./steps/requestMode.png', import.meta.url).href,
+            auth: new URL('./steps/auth.png', import.meta.url).href,
+        };
     }
 
     /**
      * The Error Header Image
      */
     get error(): string {
-        return require('./common/error.jpg') as string
+        return new URL('./common/error.jpg', import.meta.url).href;
     }
 
     /**
      * The Serch Verified Image
      */
     get verified(): string {
-        return require('./common/verified.png') as string
+        return new URL('./common/verified.png', import.meta.url).href;
     }
 
     /**
@@ -162,17 +162,13 @@ class AssetInstance {
      */
     get common() {
         return {
-            user: require("./common/user.jpg") as string,
-            provider: require("./common/provider.jpg") as string,
-            users: require("./common/users.jpg") as string,
-            providers: require("./common/providers.jpg") as string,
-            ticket: require("./common/ticket.png") as string,
-        }
+            user: new URL('./common/user.jpg', import.meta.url).href,
+            provider: new URL('./common/provider.jpg', import.meta.url).href,
+            users: new URL('./common/users.jpg', import.meta.url).href,
+            providers: new URL('./common/providers.jpg', import.meta.url).href,
+            ticket: new URL('./common/ticket.png', import.meta.url).href,
+        };
     }
-}
-
-const require = (image: string) => {
-    return new URL(image, import.meta.url).href
 }
 
 const Asset = new AssetInstance();
