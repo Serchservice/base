@@ -28,7 +28,7 @@ const AppDownload: React.FC<AppDownloadProps> = observer(({ type = "default", sh
             ],
             image: Asset.app.userShort,
             links: {
-                android: "ht",
+                android: "",
                 ios: "",
                 others: ""
             }
@@ -46,7 +46,8 @@ const AppDownload: React.FC<AppDownloadProps> = observer(({ type = "default", sh
             image: Asset.app.providerShort,
             links: {
                 android: "",
-                ios: "ht",
+                ios: "",
+                others: ""
             }
         },
         {
@@ -58,9 +59,9 @@ const AppDownload: React.FC<AppDownloadProps> = observer(({ type = "default", sh
             ],
             image: Asset.app.businessShort,
             links: {
-                android: "ht",
-                ios: "ht",
-                others: "ht"
+                android: "",
+                ios: "",
+                others: ""
             }
         }
     ]
