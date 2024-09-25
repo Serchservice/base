@@ -5,6 +5,9 @@ import DataProvider from "./backend/database/DataProvider";
 import Keys from "./backend/Keys";
 import { RouteInterface } from "./configuration/Route";
 import Routing from "./configuration/Routing";
+import { GlobalWorkerOptions } from "pdfjs-dist";
+
+GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url).toString()
 
 export const contently = new Contently({
     space: Keys.CONTENTFUL_SPACE,
