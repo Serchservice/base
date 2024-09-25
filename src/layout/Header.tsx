@@ -1,5 +1,6 @@
 import {
     ActionButton,
+    ActionDialog,
     ButtonView,
     CircularIconButton,
     Column,
@@ -27,6 +28,8 @@ import { LinkConfig } from "../configuration/ButtonView";
 import Routing from "../configuration/Routing";
 import { ConnectWithUs, JoinTheConversation } from "./Commons";
 import { HeaderProps, ModalProps } from "./Interfaces";
+import { PDFWebView } from "@serchservice/pdf-webview";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 const Header: React.FC<HeaderProps> = observer(({type = 'default'}) => {
     const [isCommonDrawerOpen, setIsCommonDrawerOpen] = React.useState<boolean>(false);
@@ -60,6 +63,8 @@ const Header: React.FC<HeaderProps> = observer(({type = 'default'}) => {
         { path: Routing.instance.career.path, header: "Career" },
     ]
 
+    const [isGuidelineOpen, setIsGuidelineOpen] = React.useState(false);
+
     if(type === 'asset') {
         return (
             <>
@@ -92,7 +97,7 @@ const Header: React.FC<HeaderProps> = observer(({type = 'default'}) => {
                                 text="Our brand guidelines"
                                 textColor={Theme.secondary}
                                 textSize={13}
-                                link={Routing.getRoute(Routing.instance.platform, {slug: "brand-guidelines"})}
+                                onTap={() => setIsGuidelineOpen(true)}
                                 showLine
                                 withArrow
                                 iconSize={1.4}
@@ -106,6 +111,7 @@ const Header: React.FC<HeaderProps> = observer(({type = 'default'}) => {
                     handleClose={() => setIsCommonDrawerOpen(false)}
                     quickLinks={optionLinks}
                 />
+                <BrandGuideline isOpen={isGuidelineOpen} handleClose={() => setIsGuidelineOpen(false)} />
             </>
         )
     } else if(type === 'blog' || type === 'news') {
@@ -274,5 +280,55 @@ const CommonDrawer: React.FC<CommonDrawerProps> = observer(({isOpen, handleClose
         </DrawerDialog>
     )
 })
+
+// Correctly using forwardRef to handle the ref
+const BrandGuideline: React.FC<ModalProps> = ({ isOpen, handleClose }) => {
+    const { isMobile } = useDesign();
+
+    return (
+        <ActionDialog
+            isOpen={isOpen}
+            handleClose={handleClose}
+            height="100%"
+            width={isMobile ? "100%" : "90%"}
+            header="Serch | Brand Guideline"
+            description="See what our guideline says about our assets"
+            color={Theme.secondary}
+            fontSize={isMobile ? 24 : 30}
+            mainStyles={{ padding: isMobile ? "24px" : "48px" }}
+            radius={0}
+        >
+            <PDFWebView
+                document={Asset.mediaAndAssets.guideline}
+                scale={1}
+                objectFit="contain"
+                width="100%"
+                height="100%"
+                canvasHeight="100%"
+                canvasWidth="100%"
+                loader={
+                    <Column crossAxis="center" mainAxis="center" style={{
+                        flex: '0 0 auto',
+                        width: '100%',
+                        height: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        flexDirection: 'column' as 'column',
+                        justifyContent: 'center',
+                    }}>
+                        <Icon
+                            icon={"line-md:loading-twotone-loop"}
+                            style={{
+                                width: isMobile ? "50px" : "100px",
+                                height: isMobile ? "50px" : "100px",
+                                color: Theme.secondary
+                            }}
+                        />
+                    </Column>
+                }
+            />
+        </ActionDialog>
+    );
+}
 
 export default Header;

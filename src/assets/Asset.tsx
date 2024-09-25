@@ -169,6 +169,15 @@ class AssetInstance {
             ticket: new URL('./common/ticket.png', import.meta.url).href,
         };
     }
+
+    /**
+     * Type: [MEDIA AND ASSET]
+     */
+    get mediaAndAssets() {
+        return {
+            guideline: "https://chxpalpeslofqzeulcjr.supabase.co/storage/v1/object/public/serch/BrandGuidelines.pdf",
+        }
+    }
 }
 
 const Asset = new AssetInstance();
