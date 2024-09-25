@@ -9,7 +9,7 @@ import Routing from "./configuration/Routing";
 export const contently = new Contently({
     space: Keys.CONTENTFUL_SPACE,
     token: Keys.CONTENTFUL_TOKEN,
-    withLog: true
+    withLog: false
 })
 
 const ParentPage = () => {

@@ -101,6 +101,7 @@ const AppDownload: React.FC<AppDownloadProps> = observer(({ type = "default", sh
                             color={Theme.secondary}
                             size={isMobile ? 22 : isDesktop ? 32 : 28}
                             weight='bold'
+                            align="center"
                             text={title}
                         />
                         <SizedBox height={20} />
@@ -108,6 +109,7 @@ const AppDownload: React.FC<AppDownloadProps> = observer(({ type = "default", sh
                             color={Theme.secondary}
                             size={isMobile ? 14 : 16}
                             opacity={0.6}
+                            align="center"
                             text={description}
                         />
                     </Column>

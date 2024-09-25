@@ -2,7 +2,6 @@ import {
     Center, Column, Container, Image, Positioned, SizedBox, Step,
     StepText, Text, Theme, useDesign, useRedirect, useWidth, Wrap
 } from "@serchservice/web-ui-kit";
-import { GlobalWorkerOptions, getDocument, PageViewport } from "pdfjs-dist";
 import React from "react";
 import Asset from "../../../assets/Asset";
 import CertificateDb from "../../../backend/database/VerifyCertificateDb";
@@ -11,6 +10,7 @@ import Routing from "../../../configuration/Routing";
 import Layout from "../../../layout/Layout";
 import AppDownload from "../../widgets/AppDownload";
 import Title from "../../widgets/Title";
+import { PDFUtils } from "@serchservice/pdf-webview";
 
 export const CertificateRoute: RouteInterface = {
     path: "/platform/certificate",
@@ -20,7 +20,6 @@ export const CertificateRoute: RouteInterface = {
 export default function CertificatePage() {
     const certificate = CertificateDb.read;
     const redirect = useRedirect();
-    const canvasRef = React.useRef<HTMLCanvasElement>(null);
 
     const width = useWidth();
     const { isMobile, isDesktop } = useDesign()
@@ -28,43 +27,23 @@ export default function CertificatePage() {
     /// DEFINITIONS
     const generalPadding = isMobile ? "120px 28px" : isDesktop ? `120px ${width <= 1110 ? '100px' : '140px'}` : "120px 56px";
 
-    // Set the workerSrc property to use the pdfjs-dist worker
-    GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/4.3.136/pdf.worker.min.js`;
-    const [imageUrl, setImageUrl] = React.useState<string | undefined>(undefined);
+    const canvasRef = React.useRef<HTMLCanvasElement>(null);
+    const [certificateUrl, setGuidelines] = React.useState<string | null>(null);
 
     const fetchCertificate = React.useCallback(async () => {
-        if (!certificate || !canvasRef.current) return;
-
-        const loadingTask = getDocument(certificate.document);
-        const pdf = await loadingTask.promise;
-        const page = await pdf.getPage(1);
-
-        const scale = 1.5;
-        const viewport: PageViewport = page.getViewport({ scale });
-        const canvas = canvasRef.current;
-        const context = canvas.getContext('2d');
-
-        if (context) {
-            canvas.height = viewport.height;
-            canvas.width = viewport.width;
-
-            const renderContext = {
-                canvasContext: context,
-                viewport: viewport,
-            };
-
-            await page.render(renderContext).promise;
-
-            // Convert the canvas to an image URL
-            const imgSrc = canvas.toDataURL();
-            setImageUrl(imgSrc);
+        try {
+            const response = await PDFUtils.getPdf({
+                document: certificate.document,
+                canvas: canvasRef.current,
+            });
+            console.log(response)
+            if (response) {
+                setGuidelines(response.pdf);
+            }
+        } catch (e) {
+            console.log(e)
         }
-    }, [ certificate ]);
-
-    const leftRatings = certificate.ratings.filter((_, index) => index % 2 === 0);
-    const rightRatings = certificate.ratings.filter((_, index) => index % 2 !== 0);
-
-    const title = `Certificate for ${certificate.data.name} | Serch`;
+    }, [canvasRef]);
 
     React.useEffect(() => {
         if(certificate != null) {
@@ -73,6 +52,11 @@ export default function CertificatePage() {
             redirect(Routing.instance.error.path, 3000)
         }
     }, [ certificate, fetchCertificate, redirect ])
+
+    const leftRatings = certificate.ratings.filter((_, index) => index % 2 === 0);
+    const rightRatings = certificate.ratings.filter((_, index) => index % 2 !== 0);
+
+    const title = `Certificate for ${certificate.data.name} | Serch`;
 
     const profileSteps: string[] = [
         `Name: ${certificate.data.name}`,
@@ -160,14 +144,14 @@ export default function CertificatePage() {
                     />
                     <SizedBox height={40} />
                 </Column>
-                {imageUrl && (
+                {certificateUrl && (
                     <Positioned top={521} left={0} right={0}>
                         <Container
                             width={isMobile ? "100%" : isDesktop ? 600 : 400}
                             height={isMobile ? "auto" : isDesktop ? 600 : 400}
                             elevation={10}
                         >
-                            <Image image={imageUrl} width="100%" height="100%" style={{borderRadius: "50%"}} />
+                            <Image image={certificateUrl} width="100%" height="100%" objectFit="contain" />
                         </Container>
                     </Positioned>
                 )}
